@@ -1,0 +1,65 @@
+html {
+    color: #474444;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: ProximaNovaRgRegular, cursive;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #2d2d2d;
+    font-family: ProximaNovaThExtrabold, cursive;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2.1em;
+}
+
+h3 {
+    font-size: 1.7em;
+}
+
+h4 {
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: .85em;
+}
+
+strong {
+    font-family: ProximaNovaRgBold, cursive;
+}
+
+/*
+ * LINKS
+ */
+
+a {
+    color: $link-color;
+    text-decoration: none;
+}
+
+a.alt {
+    color: $link-color-alt;
+}
+
+a:hover {
+    text-decoration: underline;
+}

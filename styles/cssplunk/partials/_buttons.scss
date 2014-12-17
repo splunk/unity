@@ -1,0 +1,34 @@
+/*
+ * Button
+ */
+
+[data-btn] {
+    color: #fff;
+    font-size: .85em;
+    font-family: ProximaNovaThExtrabold, cursive;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all .2s ease;
+    padding: 0 25px;
+    background-color: #43d220;
+    border: 1px solid #2eb50b;
+}
+button:hover {
+    background-color: #2eb50b;
+}
+
+button.sm {
+    text-transform: none;
+}
+button.lg {
+    font-size: 1em;
+    line-height: 2.75;
+
+}
+button.secondary {
+    background-color: #00d5ff;
+    border: 1px solid #02befc;
+}
+button.secondary:hover {
+    background-color: #02befc;
+}
