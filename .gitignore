@@ -1,0 +1,18 @@
+# PYTHON
+*.pyc
+
+# PYCHARM
+.idea
+
+# NODE
+node_modules
+
+# SASS
+.sass-cache
+
+# OS 
+.DS_Store
+*~
+
+# PIP
+pip
