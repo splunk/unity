@@ -1,0 +1,60 @@
+$font-color: #c5c6c8;
+$font-color-hover: #939498;
+$font-color-selected: #00d5ff;
+
+/*
+ * CHECKBOX & RADIO
+ */
+
+input[type="radio"],
+input[type="checkbox"] {
+    display: none;
+
+    & + label {
+        &::before {
+            color: $font-color;
+            font-family: icomoon;
+            padding-right: 5px;
+            vertical-align: bottom;
+
+        }
+
+        &:hover::before {
+            color: $font-color-hover;
+        }
+
+    }
+
+    &:checked + label::before {
+        color: $font-color-selected;
+    }
+}
+
+/*
+ * CHECKBOX
+ */
+
+input[type="checkbox"] {
+    & + label::before {
+        content: '\ea53';
+    }
+
+    &:checked + label::before {
+        content: '\ea52';
+    }
+}
+
+/*
+ * RADIO
+ */
+
+input[type="radio"] {
+    & + label::before {
+        content: '\ea56';
+    }
+
+    &:checked + label::before {
+        content: '\ea54';
+    }
+}
+

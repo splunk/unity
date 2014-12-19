@@ -1,65 +1,12 @@
-/*
-Error: Invalid CSS after " *\/": expected ":", was "$fontPath: '/';"
-        on line 9 of styles/cssplunk/partials/_variables.scss
-        from line 1 of styles/cssplunk/main.scss
+body {
+    margin: 25px;
+}
 
-4: $btnBg
-5: 
-6: /*
-7:  * FONTS
-8:  *\/
-9: $fontPath: '/';
+section {
+    padding: 10px 0;
+    border-top: 1px solid black;
 
-Backtrace:
-styles/cssplunk/partials/_variables.scss:9
-styles/cssplunk/main.scss:1
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:1096:in `tok!'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:605:in `variable'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:660:in `block_child'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:650:in `block_contents'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:117:in `stylesheet'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/scss/parser.rb:42:in `parse'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/engine.rb:393:in `_to_tree'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/engine.rb:299:in `to_tree'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:313:in `block in visit_import'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
-/home/kgreen/.rvm/gems/ruby-2.1.5/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
-/home/kgreen/.rvm/gems/ruby-2.1.5/bin/sass:23:in `load'
-/home/kgreen/.rvm/gems/ruby-2.1.5/bin/sass:23:in `<main>'
-/home/kgreen/.rvm/gems/ruby-2.1.5/bin/ruby_executable_hooks:15:in `eval'
-/home/kgreen/.rvm/gems/ruby-2.1.5/bin/ruby_executable_hooks:15:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \" */\": expected \":\", was \"$fontPath: '/';\"\A         on line 9 of styles/cssplunk/partials/_variables.scss\A         from line 1 of styles/cssplunk/main.scss\A \A 4: $btnBg\A 5: \A 6: /*\A 7:  * FONTS\A 8:  */\A 9: $fontPath: '/';"; }
+    &:last-child {
+        border-bottom: 1px solid black;
+    }
+}

@@ -1,2 +1,2 @@
-body:before{white-space:pre;font-family:monospace;content:"Error: Invalid CSS after \" */\": expected \":\", was \"$fontPath: '/';\"\A         on line 9 of styles/cssplunk/partials/_variables.scss\A         from line 1 of styles/cssplunk/main.scss\A \A 4: $btnBg\A 5: \A 6: /*\A 7:  * FONTS\A 8:  */\A 9: $fontPath: '/';"}
+body{margin:25px}section{padding:10px 0;border-top:1px solid black}section:last-child{border-bottom:1px solid black}
 /*# sourceMappingURL=main.css.map */
