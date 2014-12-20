@@ -13,9 +13,10 @@ input[type="checkbox"] {
     & + label {
         &::before {
             color: $font-color;
+            vertical-align: bottom;
             font-family: icomoon;
             padding-right: 5px;
-            vertical-align: bottom;
+            font-size: 1.1em;
 
         }
 
