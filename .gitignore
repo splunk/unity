@@ -1,5 +1,9 @@
-# PYTHON
-*.pyc
+# OS
+*~
+.*
+
+# GIT
+!.gitignore
 
 # PYCHARM
 .idea
@@ -10,8 +14,3 @@ node_env
 
 # SASS
 .sass-cache
-
-# OS
-*~
-.*
-!.gitignore
