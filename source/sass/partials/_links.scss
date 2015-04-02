@@ -11,6 +11,10 @@ a,
     }
 }
 
+[u-link~='no-underline']:hover {
+    text-decoration: none;
+}
+
 [u-link~='black'] {
     color: $link-font-color-black;
 }

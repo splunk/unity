@@ -1,6 +1,6 @@
 @import "variables";
 
-body {
+[u-base] {
     background-color: $base-bg-color;
     color: $base-font-color;
     font-size: 14px;
@@ -10,8 +10,8 @@ body {
 }
 
 b,
-[u-bold],
 strong,
+[u-bold],
 [u-strong] {
     font-family: ProximaNovaBold;
     font-weight: normal;

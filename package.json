@@ -4,8 +4,8 @@
   	"private": true,
     "devDependencies": {
         "gulp-sass": "latest",
-        "gulp-watch": "latest",
-        "gulp-rename": "latest"
+        "gulp-rename": "latest",
+        "gulp-uglify": "latest"
     },
     "scripts": {
         "preinstall": "npm install -g gulp"

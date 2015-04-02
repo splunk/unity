@@ -216,9 +216,10 @@
         </section>
 
     </div>
-    <!--<script src="unity-0.0.1/script/unity.min.js"></script>-->
-    <!--<script>-->
-        <!--new unity.DropZone(document.querySelector('[u-container~="dropzone"]'));-->
-    <!--</script>-->
+    <script src="static/scripts/unity.js"></script>
+    <script>
+        var elem = document.querySelector('[u-container~="dropzone"]'),
+            dz = new unity.DropZone(elem);
+    </script>
 </body>
 </html>

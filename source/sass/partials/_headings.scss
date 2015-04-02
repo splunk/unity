@@ -12,21 +12,6 @@ h6,
     line-height: $heading-line-height;
 }
 
-a,
-[u-link] {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    [u-heading] {
-        &:hover {
-           text-decoration: underline;
-        }
-    }
-}
-
 h1,
 [u-heading~='1'] {
     font-size: 3.43em;
