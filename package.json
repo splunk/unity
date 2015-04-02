@@ -5,8 +5,7 @@
     "devDependencies": {
         "gulp-sass": "latest",
         "gulp-watch": "latest",
-        "gulp-rename": "latest",
-        "gulp-sourcemaps": "latest"
+        "gulp-rename": "latest"
     },
     "scripts": {
         "preinstall": "npm install -g gulp"
