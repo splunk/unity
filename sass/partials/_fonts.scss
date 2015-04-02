@@ -1,0 +1,20 @@
+@import "variables";
+
+@mixin font-face($font-family, $file-path) {
+    @font-face {
+        font-family: $font-family;
+        src: url('#{$font-path}#{$file-path}.eot');
+        src: url('#{$font-path}#{$file-path}.eot?#iefix') format('embedded-opentype'),
+            url('#{$font-path}#{$file-path}.woff') format('woff'),
+            url('#{$font-path}#{$file-path}.ttf') format('truetype'),
+            url('#{$font-path}#{$file-path}.svg##{$font-family}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+@include font-face(ProximaNovaExtraBold, 'proximanova/extrabold/ProximaNova-ExtraBold');
+@include font-face(ProximaNovaRegular, 'proximanova/regular/ProximaNova-Regular');
+@include font-face(ProximaNovaBold, 'proximanova/bold/ProximaNova-Bold');
+@include font-face(unity, 'unity/unity');
+

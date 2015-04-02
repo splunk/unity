@@ -1,0 +1,23 @@
+@import "variables";
+
+body {
+    background-color: $base-bg-color;
+    color: $base-font-color;
+    font-size: 14px;
+    line-height: $base-line-height;
+    font-family: ProximaNovaRegular;
+    -webkit-font-smoothing: antialiased;
+}
+
+b,
+[u-bold],
+strong,
+[u-strong] {
+    font-family: ProximaNovaBold;
+    font-weight: normal;
+}
+
+small,
+[u-small] {
+    font-size: .85em;
+}

@@ -1,0 +1,89 @@
+// Config
+
+$font-path: '../font/';
+
+// Base
+
+$base-line-height: 1.5;
+$base-bg-color: #f4f4f4;
+$base-font-color: #474444;
+$base-font-color-gray: #939598;
+
+// Headings
+
+$heading-line-height: 1.2;
+$heading-font-color: #2d2d2d;
+$heading-font-color-gray: #939498;
+$heading-font-color-white: #fff;
+
+// Links
+
+$link-font-color: #03a2d6;
+$link-font-color-gray: #939498;
+$link-font-color-black: #474444;
+
+// Inputs
+
+$input-bg-color: #fff;
+$input-font-color: #c5c6c8;
+$input-font-color-hover: #939498;
+$input-font-color-selected: #03a2d6;
+
+// Buttons
+
+$btn-transition: all .2s;
+
+$btn-font-color-green: #fff;
+$btn-font-color-green-hover: #fff;
+$btn-font-color-green-disabled: #fff;
+$btn-bg-color-green: #43d220;
+$btn-bg-color-green-hover: #2eb50b;
+$btn-bg-color-green-disabled: #b5edaa;
+$btn-border-color-green: #2eb50b;
+$btn-border-color-green-hover: #2eb50b;
+$btn-border-color-green-disabled: #b3eaa8;
+
+$btn-font-color-blue: #fff;
+$btn-font-color-blue-hover: #fff;
+$btn-font-color-blue-disabled: #fff;
+$btn-bg-color-blue: #03a2d6;
+$btn-bg-color-blue-hover: #027fbb;
+$btn-bg-color-blue-disabled: #a2daf0;
+$btn-border-color-blue: #027fbb;
+$btn-border-color-blue-hover: #027fbb;
+$btn-border-color-blue-disabled: #a0cce4;
+
+$btn-font-color-white: #474444;
+$btn-font-color-white-hover: #474444;
+$btn-font-color-white-disabled: #b4b2b2;
+$btn-bg-color-white: #f9f9f9;
+$btn-bg-color-white-hover: #f9f9f9;
+$btn-bg-color-white-disabled: #fcfcfc;
+$btn-border-color-white: #c5c6c8;
+$btn-border-color-white-hover: #939498;
+$btn-border-color-white-disabled: #e8e8e8;
+
+$btn-font-color-red: #fff;
+$btn-font-color-red-hover: #fff;
+$btn-font-color-red-disabled: #fff;
+$btn-bg-color-red: #d93d33;
+$btn-bg-color-red-hover: #a4231a;
+$btn-bg-color-red-disabled: #f0b2af;
+$btn-border-color-red: #a4231a;
+$btn-border-color-red-hover: #a4231a;
+$btn-border-color-red-disabled: #dba7a5;
+
+// Containers
+
+$container-transition: all .2s ease-in-out;
+$container-border: 1px solid #d6d6d6;
+$container-border-dropzone: 1px dashed #d6d6d6;
+$container-border-dropzone-hover: 1px dashed #939498;
+$container-bg-color-white: #ffffff;
+$container-bg-color-gray: #eeeeee;
+$container-bg-color-dropzone: #f9f9f9;
+
+// Divider
+
+$divider-border-color: #eeeeee;
+$divider-border-color-dark: #d6d6d6;

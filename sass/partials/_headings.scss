@@ -1,0 +1,75 @@
+@import "variables";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[u-heading] {
+    color: $heading-font-color;
+    font-weight: normal;
+    line-height: $heading-line-height;
+}
+
+a,
+[u-link] {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    [u-heading] {
+        &:hover {
+           text-decoration: underline;
+        }
+    }
+}
+
+h1,
+[u-heading~='1'] {
+    font-size: 3.43em;
+    font-family: ProximaNovaExtrabold;
+}
+
+h2,
+[u-heading~='2'] {
+    font-size: 2.29em;
+    font-family: ProximaNovaExtrabold;
+}
+
+h3,
+[u-heading~='3'] {
+    font-size: 1.7em;
+    font-family: ProximaNovaExtrabold;
+}
+
+h4,
+[u-heading~='4'] {
+    font-size: 1em;
+    font-family: ProximaNovaExtrabold;
+    text-transform: uppercase;
+}
+
+h5,
+[u-heading~='5'] {
+    font-size: 1em;
+    font-family: ProximaNovaBold;
+}
+
+h6,
+[u-heading~='6'] {
+    font-size: .85em;
+    font-family: ProximaNovaBold;
+    text-transform: uppercase;
+}
+
+[u-heading~='white'] {
+    color: $heading-font-color-white
+}
+
+[u-heading~='gray'],
+[u-heading~='grey'] {
+    color: $heading-font-color-gray;
+}

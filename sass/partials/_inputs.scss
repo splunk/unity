@@ -1,0 +1,66 @@
+@import "variables";
+
+/*
+ * CHECKBOX & RADIO
+ */
+
+input[type='radio'],
+input[type='checkbox'] {
+    display: none;
+
+    & + label {
+        display: block;
+        cursor: pointer;
+
+        &::selection {
+            background-color: transparent;
+        }
+
+        &::before {
+            color: $input-font-color;
+            background-color: $input-bg-color;
+            font-family: unity;
+            margin-right: .4em;
+            vertical-align: bottom;
+        }
+
+        &:hover::before {
+            color: $input-font-color-hover;
+        }
+
+    }
+
+    &:checked + label::before {
+        color: $input-font-color-selected;
+    }
+}
+
+/*
+ * CHECKBOX
+ */
+
+input[type='checkbox'] {
+    & + label::before {
+        border-radius: .25em;
+        content: '\e601';
+    }
+
+    &:checked + label::before {
+        content: '\e600';
+    }
+}
+
+/*
+ * RADIO
+ */
+
+input[type='radio'] {
+    & + label::before {
+        border-radius: .5em;
+        content: '\e603';
+    }
+
+    &:checked + label::before {
+        content: '\e602';
+    }
+}

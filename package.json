@@ -1,0 +1,14 @@
+{
+    "name": "unity",
+  	"version": "0.0.1",
+  	"private": true,
+    "devDependencies": {
+        "gulp-sass": "latest",
+        "gulp-watch": "latest",
+        "gulp-rename": "latest",
+        "gulp-sourcemaps": "latest"
+    },
+    "scripts": {
+        "preinstall": "npm install -g gulp"
+    }
+}

@@ -1,0 +1,14 @@
+@import "mixins";
+@import "variables";
+
+hr,
+[u-divider] {
+    margin: 10px 0;
+    height: 0;
+    border: none;
+    border-bottom: 1px solid $divider-border-color;
+}
+
+[u-divider~='dark'] {
+    border-color: $divider-border-color-dark;
+}

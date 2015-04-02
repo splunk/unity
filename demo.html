@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Unity</title>
+<link rel="stylesheet" href="style/unity.css">
+<style>
+    body {margin: 25px; background-color: white}
+    section {padding: 10px 0; border-top: 1px solid black}
+    section::last-child {border-bottom: 1px solid black}
+</style>
+</head>
+<body>
+    <div class="demo">
+
+        <section>
+            <pre>&ltdiv u-container&gt</pre>
+            <div u-container>
+                <p>Container</p>
+            </div>
+
+            <pre>&ltdiv u-container="gray"&gt</pre>
+            <div u-container="gray">
+                <p>Gray container</p>
+            </div>
+
+            <pre>&ltdiv u-container="dropzone"&gt</pre>
+            <pre>&ltscript&gtnew unity.DropZone(elem).drop(callback)&lt/script&gt</pre>
+            <div u-container="dropzone">
+                <p>Dropzone container</p>
+            </div>
+
+        </section>
+
+        <section>
+            <pre>&lth1&gt</pre>
+            <h1>Heading 1</h1>
+
+            <pre>&ltp u-heading="1|2|3|4|5|6"&gt</pre>
+            <p u-heading="1">Heading by attribute</p>
+        </section>
+
+        <section>
+            <pre>&lth1 u-heading="gray|gray"&gt</pre>
+            <h1 u-heading="gray">Gray heading</h1>
+        </section>
+
+        <section>
+            <div u-container="gray">
+                <pre>&lth1 u-heading="white"&gt</pre>
+                <h1 u-heading="white">White heading</h1>
+            </div>
+        </section>
+
+        <section>
+            <pre>&lth2&gt</pre>
+            <h2>Heading 2</h2>
+        </section>
+
+        <section>
+            <pre>&lth3&gt</pre>
+            <h3>Heading 3</h3>
+        </section>
+
+        <section>
+            <pre>&lth4&gt</pre>
+            <h4>Heading 4</h4>
+        </section>
+
+        <section>
+            <pre>&lth5&gt</pre>
+            <h5>Heading 5</h5>
+        </section>
+
+        <section>
+            <pre>&lth6&gt</pre>
+            <h6 u-heading="6">Heading 6</h6>
+        </section>
+
+        <section>
+            <pre>&ltp&gt</pre>
+            <p>Entium voluptatum deleniti atque corrupti quos dolores et quas molestias est et expedita distinctio. Nam libero tempore, cum soluta nobis est quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+        </section>
+
+        <section>
+            <pre>&lta&gt</pre>
+            <p><a href="#">Standard link</a></p>
+            <pre>&ltspan u-link&gt</pre>
+            <p><span u-link>Link by attribute</span></p>
+        </section>
+
+        <section>
+            <pre>&lta u-link="black"&gt</pre>
+            <p><a u-link="black" href="#">Black link</a></p>
+        </section>
+
+        <section>
+            <pre>&ltsmall&gt</pre>
+            <p>Atque corrupti quos dolores et quas <small>"small text"</small> molestias est et expedita distinctio.</p>
+
+            <pre>&ltspan u-small&gt</pre>
+            <p>Atque corrupti quos dolores et quas <span u-small>"small text by attribute"</span> molestias est et expedita distinctio.</p>
+        </section>
+
+        <section>
+            <pre>&ltstrong&gt</pre>
+            <p>Atque corrupti quos dolores et quas <strong>strong text</strong> molestias est et expedita distinctio.</p>
+            <pre>&ltspan u-strong&gt</pre>
+            <p>Atque corrupti quos dolores et quas <span u-strong>strong text by attribute</span> molestias est et expedita distinctio.</p>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn&gt</pre>
+            <button u-btn>Button</button>
+
+            <pre>&lta u-btn&gt</pre>
+            <a u-btn href="#">Button as link</a>
+
+            <pre>&ltselect u-btn&gt</pre>
+            <select u-btn>
+                <option>Button as dropdown</option>
+                <option>Thing 1</option>
+                <option>Thing 2</option>
+            </select>
+
+            <pre>&ltbutton u-btn disabled&gt</pre>
+            <button u-btn disabled>Button disabled</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="lg"&gt</pre>
+            <button u-btn="lg">Large button</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="sm"&gt</pre>
+            <button u-btn="sm">Small button</button>
+        </section>
+
+        <section>
+            <pre>&ltu-btn="xs"&gt</pre>
+            <button u-btn="xs">Extra small button</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="stretch"&gt</pre>
+            <button u-btn="stretch">Stretch button</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="blue"&gt</pre>
+            <button u-btn="blue">Blue button</button>
+
+            <pre>&ltbutton u-btn="blue" disabled&gt</pre>
+            <button u-btn="blue" disabled>Blue button disabled</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="white"&gt</pre>
+            <button u-btn="white">White button</button>
+
+            <pre>&ltbutton u-btn="white" disabled&gt</pre>
+            <button u-btn="white" disabled>White button disabled</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="red"&gt</pre>
+            <button u-btn="red">Red button</button>
+
+            <pre>&ltbutton u-btn="red" disabled&gt</pre>
+            <button u-btn="red" disabled>Red button disabled</button>
+        </section>
+
+        <section>
+            <pre>&ltbutton u-btn="no-hover"&gt</pre>
+            <button u-btn="no-hover">Button no hover</button>
+            <button u-btn="blue no-hover">Button no hover</button>
+            <button u-btn="red no-hover">Button no hover</button>
+            <button u-btn="white no-hover">Button no hover</button>
+        </section>
+
+        <section>
+            <pre>&ltinput id="x" type="checkbox"&gt&ltlabel for="x"&gt&lt/label&gt</pre>
+            <div u-container="gray">
+                <input id="c1" type="checkbox">
+                <label for="c1">Checkbox</label>
+            </div>
+        </section>
+
+        <section>
+            <pre>&ltinput id="x" type="radio"&gt&ltlabel for="x"&gt&lt/label&gt</pre>
+            <div u-container="gray">
+
+                <input id="r1" type="radio" name="r0">
+                <label for="r1">Foo</label>
+
+                <input id="r2" type="radio" name="r0">
+                <label for="r2">Bar</label>
+
+            </div>
+        </section>
+
+        <section>
+            <pre>&lthr&gt</pre>
+            <div u-container>
+                <hr>
+            </div>
+            <pre>&ltdiv u-divider&gt</pre>
+            <div u-container>
+                <div u-divider></div>
+            </div>
+
+            <pre>&lthr u-divider="dark&gt</pre>
+            <div u-container="gray">
+                <hr u-divider="dark">
+            </div>
+        </section>
+
+    </div>
+    <script src="unity-0.0.1/script/unity.min.js"></script>
+    <script>
+        new unity.DropZone(document.querySelector('[u-container~="dropzone"]'));
+    </script>
+</body>
+</html>

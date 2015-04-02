@@ -1,0 +1,21 @@
+@import "variables";
+
+a,
+[u-link] {
+    color: $link-font-color;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+[u-link~='black'] {
+    color: $link-font-color-black;
+}
+
+[u-link~='gray'],
+[u-link~='grey'] {
+    color: $link-font-color-gray;
+}

@@ -6,13 +6,12 @@
 
 # NODE
 node_modules
+node_env
 
 # SASS
 .sass-cache
 
-# OS 
-.DS_Store
+# OS
 *~
-
-# PIP
-pip
+.*
+!.gitignore
