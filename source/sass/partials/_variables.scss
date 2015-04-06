@@ -1,20 +1,33 @@
-// Config
+// Configuration
 
 $font-path: '../fonts/';
 
-// Base
 
-$base-line-height: 1.5;
-$base-bg-color: #f4f4f4;
-$base-font-color: #474444;
-$base-font-color-gray: #939598;
+// Font size
 
-// Headings
+$font-size-base:        14px;
+$font-size-small:       12px;
+$font-size-heading1:    48px;
+$font-size-heading2:    32px;
+$font-size-heading3:    24px;
+$font-size-heading4:    16px;
+$font-size-heading5:    16px;
+$font-size-heading6:    12px;
 
-$heading-line-height: 1.2;
-$heading-font-color: #2d2d2d;
-$heading-font-color-gray: #939498;
-$heading-font-color-white: #fff;
+// Line height
+
+$line-height-base:      1.4;
+$line-height-heading:   1.2;
+
+// Color
+
+$color-base:            #474444;
+$color-heading:         #2d2d2d;
+$color-heading-gray:    #939498;
+$color-heading-white:   #ffffff;
+$color-link:            #03a2d6;
+$color-link-gray:       #939498;
+$color-link-black:      #474444;
 
 // Links
 

@@ -1,9 +1,9 @@
 @import "variables";
 
 [u-container] {
-    padding:20px;
+    padding:    20px;
     background: $container-bg-color-white;
-    border: $container-border;
+    border:     $container-border;
 
     & + [u-container] {
         margin-top: 20px;
@@ -17,7 +17,7 @@
 
 [u-container~='dropzone'] {
     background: $container-bg-color-dropzone;
-    border: $container-border-dropzone;
+    border:     $container-border-dropzone;
     transition: $container-transition;
 
     &.hover {

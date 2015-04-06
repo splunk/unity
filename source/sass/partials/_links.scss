@@ -1,25 +1,29 @@
 @import "variables";
 
-a,
-[u-link] {
-    color: $link-font-color;
-    text-decoration: none;
+[u-base] {
+    a,
+    [u-link] {
+        font-size: $font-size-base;
+        color: $color-link;
+        text-decoration: none;
 
-    &:hover {
-        cursor: pointer;
-        text-decoration: underline;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    [u-link~='no-underline']:hover {
+        text-decoration: none;
+    }
+
+    [u-link~='black'] {
+        color: $color-link-black;
+    }
+
+    [u-link~='gray'],
+    [u-link~='grey'] {
+        color: $color-link-gray;
     }
 }
 
-[u-link~='no-underline']:hover {
-    text-decoration: none;
-}
-
-[u-link~='black'] {
-    color: $link-font-color-black;
-}
-
-[u-link~='gray'],
-[u-link~='grey'] {
-    color: $link-font-color-gray;
-}
