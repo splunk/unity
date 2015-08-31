@@ -19,7 +19,7 @@ input[type='checkbox'] {
         &::before {
             color: $input-font-color;
             background-color: $input-bg-color;
-            font-family: unity;
+            font-family: unity, monospace;
             margin-right: .4em;
             vertical-align: bottom;
         }
@@ -62,5 +62,20 @@ input[type='radio'] {
 
     &:checked + label::before {
         content: '\e602';
+    }
+}
+
+/*
+ * DISABLED
+ */
+
+input[type='radio']:disabled,
+input[type='checkbox']:disabled {
+    & + label {
+        cursor: not-allowed;
+
+        &::before {
+            color: $input-font-color-disabled;
+        }
     }
 }

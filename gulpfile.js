@@ -4,7 +4,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
-var version = '0.0.2';
+var version = '0.0.3';
 
 function renameToVersionDotMin() {
     return rename(function(path) {
