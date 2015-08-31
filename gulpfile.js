@@ -4,23 +4,22 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
-var version = '0.0.3';
+var dest = 'unity-0.0.3';
 
-function renameToVersionDotMin() {
+function addDotMin() {
     return rename(function(path) {
-        path.basename += '.' + version + '.min';
+        path.basename += '.min';
     });
 }
 
-function runJs() {
+function jsTask() {
     gulp.src('./source/js/unity.js')
         .pipe(uglify())
-        .pipe(renameToVersionDotMin())
-        .pipe(gulp.dest('./static/scripts'));
+        .pipe(addDotMin())
+        .pipe(gulp.dest('./' + dest + '/scripts'));
 }
 
-
-function runSass() {
+function sassTask() {
     gulp.src('./source/sass/unity.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({
@@ -29,14 +28,13 @@ function runSass() {
                 return console.error(err);
             }
         }))
-        .pipe(renameToVersionDotMin())
+        .pipe(addDotMin())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./static/styles'));
+        .pipe(gulp.dest('./' + dest + '/styles'));
 }
 
-
-gulp.task('js', runJs);
-gulp.task('sass', runSass);
+gulp.task('js', jsTask);
+gulp.task('sass', sassTask);
 gulp.task('build', ['js', 'sass']);
 gulp.task('watch', function() {
     gulp.watch('./source/js/unity.js', ['js']);
