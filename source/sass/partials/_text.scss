@@ -1,15 +1,16 @@
-[u-base] {
+@import "variables";
+
+[u-core] {
     b,
     strong,
     [u-bold],
     [u-strong] {
-        font-size: $font-size-base;
-        font-family: ProximaNovaBold;
+        font-family: ProximaNovaBold, monospace;
         font-weight: normal;
     }
 
     small,
     [u-small] {
-        font-size:  $font-size-small;
+        font-size: $font-size-small;
     }
 }

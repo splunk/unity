@@ -1,10 +1,11 @@
 @import "variables";
 
-[u-base] {
+[u-core] {
+
     a,
     [u-link] {
         font-size: $font-size-base;
-        color: $color-link;
+        color: $link-font-color;
         text-decoration: none;
 
         &:hover {
@@ -18,12 +19,15 @@
     }
 
     [u-link~='black'] {
-        color: $color-link-black;
+        color: $link-font-color-black;
     }
 
     [u-link~='gray'],
     [u-link~='grey'] {
-        color: $color-link-gray;
+        color: $link-font-color-gray;
+    }
+
+    [u-link~='white'] {
+        color: $link-font-color-white;
     }
 }
-

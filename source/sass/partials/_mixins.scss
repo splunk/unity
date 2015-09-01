@@ -1,4 +1,0 @@
-@mixin transform($value) {
-    -webkit-transform: $value; // safari <= 8
-            transform: $value; // everything else
-}

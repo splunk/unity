@@ -1,26 +1,28 @@
 @import "variables";
 
-[u-container] {
-    padding:    20px;
-    background: $container-bg-color-white;
-    border:     $container-border;
+[u-core] {
+    [u-container] {
+        padding: 20px;
+        background: $container-bg-color-white;
+        border: $container-border;
 
-    & + [u-container] {
-        margin-top: 20px;
+        & + [u-container] {
+            margin-top: 20px;
+        }
     }
-}
 
-[u-container~='gray'],
-[u-container~='grey'] {
-    background: $container-bg-color-gray;
-}
+    [u-container~='gray'],
+    [u-container~='grey'] {
+        background: $container-bg-color-gray;
+    }
 
-[u-container~='dropzone'] {
-    background: $container-bg-color-dropzone;
-    border:     $container-border-dropzone;
-    transition: $container-transition;
+    [u-container~='dropzone'] {
+        background: $container-bg-color-dropzone;
+        border: $container-border-dropzone;
+        transition: $container-transition;
 
-    &.hover {
-        border: $container-border-dropzone-hover;
+        &.hover {
+            border: $container-border-dropzone-hover;
+        }
     }
 }

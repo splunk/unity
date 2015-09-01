@@ -1,81 +1,76 @@
 @import "variables";
 
-/*
- * CHECKBOX & RADIO
- */
+[u-core] {
 
-input[type='radio'],
-input[type='checkbox'] {
-    display: none;
+    // CHECKBOX & RADIO
 
-    & + label {
-        display: block;
-        cursor: pointer;
+    input[type='radio'],
+    input[type='checkbox'] {
+        display: none;
 
-        &::selection {
-            background-color: transparent;
+        & + label {
+            display: block;
+            cursor: pointer;
+
+            &::selection {
+                background-color: transparent;
+            }
+
+            &::before {
+                color: $input-font-color;
+                background-color: $input-bg-color;
+                font-family: unity, monospace;
+                margin-right: .4em;
+                vertical-align: bottom;
+            }
+
+            &:hover::before {
+                color: $input-font-color-hover;
+            }
+
         }
 
-        &::before {
-            color: $input-font-color;
-            background-color: $input-bg-color;
-            font-family: unity, monospace;
-            margin-right: .4em;
-            vertical-align: bottom;
+        &:checked + label::before {
+            color: $input-font-color-selected;
+        }
+    }
+
+    // CHECKBOX
+
+    input[type='checkbox'] {
+        & + label::before {
+            border-radius: .25em;
+            content: '\e601';
         }
 
-        &:hover::before {
-            color: $input-font-color-hover;
+        &:checked + label::before {
+            content: '\e600';
+        }
+    }
+
+    // RADIO
+
+    input[type='radio'] {
+        & + label::before {
+            border-radius: .5em;
+            content: '\e603';
         }
 
+        &:checked + label::before {
+            content: '\e602';
+        }
     }
 
-    &:checked + label::before {
-        color: $input-font-color-selected;
-    }
-}
+    // DISABLED
 
-/*
- * CHECKBOX
- */
+    input[type='radio']:disabled,
+    input[type='checkbox']:disabled {
+        & + label {
+            cursor: not-allowed;
 
-input[type='checkbox'] {
-    & + label::before {
-        border-radius: .25em;
-        content: '\e601';
-    }
-
-    &:checked + label::before {
-        content: '\e600';
-    }
-}
-
-/*
- * RADIO
- */
-
-input[type='radio'] {
-    & + label::before {
-        border-radius: .5em;
-        content: '\e603';
-    }
-
-    &:checked + label::before {
-        content: '\e602';
-    }
-}
-
-/*
- * DISABLED
- */
-
-input[type='radio']:disabled,
-input[type='checkbox']:disabled {
-    & + label {
-        cursor: not-allowed;
-
-        &::before {
-            color: $input-font-color-disabled;
+            &::before {
+                color: $input-font-color-disabled;
+            }
         }
     }
 }

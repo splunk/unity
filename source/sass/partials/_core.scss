@@ -1,14 +1,9 @@
 @import "variables";
 
-[u-base] {
+[u-core] {
     color: $color-base;
     font-size: $font-size-base;
     line-height: $line-height-base;
-    font-family: ProximaNovaRegular;
+    font-family: ProximaNovaRegular, monospace;
     text-shadow: none;
-}
-
-[u-base] * {
-    margin:  0;
-    padding: 0;
 }

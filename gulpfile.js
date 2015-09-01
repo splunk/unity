@@ -4,7 +4,8 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
-var dest = 'unity-0.0.3';
+var dest = 'unity-0.0.3',
+    splunkbase = '../splunkapps/splunkapps/static/lib';
 
 function addDotMin() {
     return rename(function(path) {
@@ -16,12 +17,13 @@ function jsTask() {
     gulp.src('./source/js/unity.js')
         .pipe(uglify())
         .pipe(addDotMin())
-        .pipe(gulp.dest('./' + dest + '/scripts'));
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./' + dest + '/script'));
 }
 
 function sassTask() {
     gulp.src('./source/sass/unity.scss')
-        .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'compressed',
             onError: function(err) {
@@ -29,14 +31,23 @@ function sassTask() {
             }
         }))
         .pipe(addDotMin())
+        .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./' + dest + '/styles'));
+        .pipe(gulp.dest('./' + dest + '/style'));
+}
+
+function watchTask() {
+    gulp.watch('./source/js/unity.js', ['js']);
+    gulp.watch('./source/sass/**/*.scss', ['sass']);
+}
+
+function splunkbaseTask() {
+    gulp.src(['./' + dest + '/**/*'])
+        .pipe(gulp.dest(splunkbase + '/' +  dest));
 }
 
 gulp.task('js', jsTask);
 gulp.task('sass', sassTask);
+gulp.task('watch', watchTask);
+gulp.task('splunkbase', splunkbaseTask);
 gulp.task('build', ['js', 'sass']);
-gulp.task('watch', function() {
-    gulp.watch('./source/js/unity.js', ['js']);
-    gulp.watch('./source/sass/**/*.scss', ['sass']);
-});
