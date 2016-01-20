@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-scss');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
-var dest = 'unity-0.0.3',
+var dest = 'unity-2.0.0',
     splunkbase = '../splunkapps/splunkapps/static/lib';
 
 function addDotMin() {
@@ -23,7 +23,7 @@ function jsTask() {
 }
 
 function sassTask() {
-    gulp.src('./source/sass/unity.scss')
+    gulp.src('./source/scss/unity.scss')
         .pipe(sass({
             outputStyle: 'compressed',
             onError: function(err) {
@@ -38,7 +38,7 @@ function sassTask() {
 
 function watchTask() {
     gulp.watch('./source/js/unity.js', ['js']);
-    gulp.watch('./source/sass/**/*.scss', ['sass']);
+    gulp.watch('./source/scss/**/*.scss', ['sass']);
 }
 
 function splunkbaseTask() {

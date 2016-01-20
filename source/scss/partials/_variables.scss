@@ -1,6 +1,17 @@
 // Configuration
 
 $font-path: '../font/';
+$svg-path: '../svg/';
+
+// Breakpoints
+
+$breakpoints: (
+    xs: 0,
+    sm: 34rem,
+    md: 48rem,
+    lg: 64rem,
+    xl: 80rem,
+);
 
 // Font size
 
@@ -27,8 +38,8 @@ $color-heading-white:   #ffffff;
 
 // Links
 
-$link-font-color: #03a2d6;
-$link-font-color-gray: #939498;
+$link-font-color:       #03a2d6;
+$link-font-color-gray:  #939498;
 $link-font-color-black: #474444;
 $link-font-color-white: #ffffff;
 
