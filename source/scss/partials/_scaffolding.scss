@@ -70,6 +70,10 @@ container--xl
     display: inline-flex;
 }
 
+[container~='hide'] {
+    display: none;
+}
+
 [container~='rows'] {
     flex-wrap: wrap;
 }
