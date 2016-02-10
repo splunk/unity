@@ -140,7 +140,7 @@
 
         const descriptions = {
             containerNoWrap: function(mainStart, mainEnd) {
-                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will not wrap`;
+                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will not wrap.`;
             },
             containerWraps: function(mainStart, mainEnd, crossStart, crossEnd) {
                 return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will wrap from ${crossStart} to ${crossEnd}`;
@@ -151,13 +151,23 @@
         const container = document.querySelector('.content');
         const content = [
             {
+                name: '@responsive',
+                desc: 'Sets sizing specific rules to elements',
+                code: '<div container@[size]="[modifier]">',
+                demo: `<div container="items-tb">
+                        <div container.item="width-1/2" container.item@xs="width-1/1"><div>Wide @ Extra Small</div></div>
+                        <div container.item="width-1/2" container.item@sm="width-1/1"><div>Wide @ Small</div></div>
+                        <div container.item="width-1/2" container.item@md="width-1/1"><div>Wide @ Medium</div></div>
+                        <div container.item="width-1/2" container.item@lg="width-1/1"><div>Wide @ Large</div></div>
+                        <div container.item="width-1/2" container.item@xl="width-1/1"><div>Wide @ Extra Large</div></div>
+                    </div>`
+            },
+            {
                 name: 'container',
                 desc: 'Main container object',
                 code: '<div container>',
                 demo: `<div container>
-                        <div>
-                            <div>1</div>
-                        </div>
+                        <div><div>1</div></div>
                     </div>`,
                 modifiers: [
 //                    {
@@ -180,7 +190,7 @@
                     },
                     {
                         name: 'items-lr',
-                        desc: descriptions.containerNoWrap('left', 'right'),
+                        desc: descriptions.containerNoWrap('left', 'right') + ' This is the default setting.',
                         code: '<div container="items-lr">',
                         demo: `<div container="items-lr">
                                 <div><div>1</div></div>
@@ -345,15 +355,15 @@
                                 <div container.item="width-4/5"><div>4/5</div></div>
                                 <div container.item="width-5/5"><div>5/5</div></div>
                             </div>`
-                    },
+                    }
                 ],
                 children: [
-                    {
-                        name: 'container.item',
-                        desc: 'blah blah',
-                        code: '<div container.item>',
-                        demo: null
-                    }
+//                    {
+//                        name: 'container.item',
+//                        desc: 'blah blah',
+//                        code: '<div container.item>',
+//                        demo: null
+//                    }
                 ]
             }
         ];
@@ -361,13 +371,17 @@
         content.forEach(function(object) {
             const node = createNode(object);
 
-            object.modifiers.forEach(function(item) {
-                node.appendChild(createNode(item, object.name));
-            });
+            if (object.modifiers) {
+                object.modifiers.forEach(function (item) {
+                    node.appendChild(createNode(item, object.name));
+                });
+            }
 
-            object.children.forEach(function(item) {
-                node.appendChild(createNode(item, object.name));
-            });
+            if (object.children) {
+                object.children.forEach(function(item) {
+                    node.appendChild(createNode(item, object.name));
+                });
+            }
 
             container.appendChild(node);
         });
