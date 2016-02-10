@@ -4,8 +4,10 @@
     <title>Unity</title>
     <meta charset='utf-8'>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
         }
 
         .checkbox {
@@ -25,7 +27,16 @@
 </head>
 <body>
 
-    <label class="checkbox">My Checkbox</label>
+    <div style="display: inline-flex; width: 50%; border: 1px solid red">
+        <div>1</div>
+    </div>
+    <div style="display: inline-flex; width: 50%; border: 1px solid blue">
+        <div>2</div>
+    </div>
+    <div style="clear: both">
+        <div style="border: 1px solid green; float: left; width: 50%">3</div>
+        <div style="border: 1px solid purple; float: left; width: 50%">4</div>
+    </div>
 
     <!--<svg>-->
         <!--<use xlink:href="source/svg/yoga.svg#position_1"/>-->

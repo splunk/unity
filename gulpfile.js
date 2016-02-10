@@ -1,53 +1,51 @@
-var gulp = require('gulp');
-var sass = require('gulp-scss');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
+    sourcemaps = require('gulp-sourcemaps'),
+    postcssGulp = require('gulp-postcss');
 
-var dest = 'unity-2.0.0',
-    splunkbase = '../splunkapps/splunkapps/static/lib';
+var filename = 'unity-2.0.0.min';
 
-function addDotMin() {
-    return rename(function(path) {
-        path.basename += '.min';
-    });
-}
-
-function jsTask() {
-    gulp.src('./source/js/unity.js')
-        .pipe(uglify())
-        .pipe(addDotMin())
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./' + dest + '/script'));
-}
-
-function sassTask() {
-    gulp.src('./source/scss/unity.scss')
-        .pipe(sass({
-            outputStyle: 'compressed',
-            onError: function(err) {
-                return console.error(err);
-            }
-        }))
-        .pipe(addDotMin())
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./' + dest + '/style'));
-}
+//function jsTask() {
+//    gulp.src('./src/js/unity.js')
+//        .pipe(uglify())
+//        .pipe(addDotMin())
+//        .pipe(sourcemaps.init())
+//        .pipe(sourcemaps.write('./'))
+//        .pipe(gulp.dest('./' + dest + '/script'));
+//}
 
 function watchTask() {
-    gulp.watch('./source/js/unity.js', ['js']);
-    gulp.watch('./source/scss/**/*.scss', ['sass']);
+    gulp.watch('./src/js/unity.js', ['js']);
+    gulp.watch('./src/scss/**/*.scss', ['css']);
 }
 
-function splunkbaseTask() {
-    gulp.src(['./' + dest + '/**/*'])
-        .pipe(gulp.dest(splunkbase + '/' +  dest));
+function cssTask() {
+
+    //gulp.src('./src/scss/test.scss')
+    gulp.src('./src/scss/bootstrap.scss')
+
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }).on('error', sass.logError))
+
+        .pipe(postcssGulp([
+            require('css-mqpacker')(),
+            require('autoprefixer')()
+        ]))
+
+        //.pipe(require('gulp-cssnano')())
+
+        .pipe(rename(function(path) {
+            path.basename = filename;
+            path.ext = 'css';
+        }))
+
+        .pipe(gulp.dest('./bin/css'));
 }
 
-gulp.task('js', jsTask);
-gulp.task('sass', sassTask);
+//gulp.task('js', jsTask);
+gulp.task('css', cssTask);
 gulp.task('watch', watchTask);
-gulp.task('splunkbase', splunkbaseTask);
-gulp.task('build', ['js', 'sass']);
+gulp.task('build', ['js', 'css']);

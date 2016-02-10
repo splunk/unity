@@ -1,0 +1,243 @@
+.debug {
+    [container],
+    [container] > * {
+        margin: 10px;
+    }
+    [container] {
+        border: 1px solid red;
+    }
+    [container] > * {
+        border: 1px solid blue;
+    }
+    [container] > [container] {
+        border: 1px solid green;
+    }
+}
+
+@include attribute(container) {
+
+    /*----------------------------------------------------\
+    | flex-direction | flex-wrap | main axis | cross axis |
+    |-----------------------------------------------------|
+    | row              nowrap      →           ↓          |
+    | row	           wrap	       →	       ↓          |
+    | row	           wrap-rev	   →	       ↑          |
+    | row-rev	       nowrap	   ←	       ↓          |
+    | row-rev	       wrap	       ←	       ↓          |
+    | row-rev	       wrap-rev	   ←	       ↑          |
+    | column	       nowrap	   ↓	       →          |
+    | column	       wrap	       ↓	       →          |
+    | column	       wrap-rev	   ↓	       ←          |
+    | column-rev	   nowrap	   ↑	       →          |
+    | column-rev	   wrap	       ↑	       →          |
+    | column-rev       wrap-rev	   ↑	       ←          |
+    \----------------------------------------------------*/
+
+    display: flex;
+
+    // display
+
+    //@include modifier(inline) {
+    //    display: inline-flex;
+    //}
+
+    @include modifier(hide) {
+        display: none;
+    }
+
+   // flex-direction & flex-wrap
+
+    @include modifier(items-lr) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    @include modifier(items-lr-tb) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    @include modifier(items-lr-bt) {
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+    }
+
+    @include modifier(items-rl) {
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+    }
+
+    @include modifier(items-rl-tb) {
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+    }
+
+    @include modifier(items-rl-bt) {
+        flex-direction: row-reverse;
+        flex-wrap: wrap-reverse;
+    }
+
+    @include modifier(items-tb) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    @include modifier(items-tb-lr) {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    @include modifier(items-tb-rl) {
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+    }
+
+    @include modifier(items-bt) {
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+    }
+
+    @include modifier(items-bt-lr) {
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+    }
+
+    @include modifier(items-bt-rl) {
+        flex-direction: column-reverse;
+        flex-wrap: wrap-reverse;
+    }
+
+    // width
+
+    @include width();
+
+    // justify-content
+
+    @include modifier(items-main-start) {
+        justify-content: flex-start; // default
+    }
+
+    @include modifier(items-main-end) {
+        justify-content: flex-end;
+    }
+
+    @include modifier(items-main-center) {
+        justify-content: center;
+    }
+
+    @include modifier(items-main-around) {
+        justify-content: space-around;
+    }
+
+    @include modifier(items-main-between) {
+        justify-content: space-between;
+    }
+
+    // align-items
+
+    @include modifier(items-cross-start) {
+        align-items: flex-start;
+    }
+
+    @include modifier(items-cross-end) {
+        align-items: flex-end;
+    }
+
+    @include modifier(items-cross-center) {
+        align-items: center;
+    }
+
+    @include modifier(items-cross-baseline) {
+        align-items: baseline;
+    }
+
+    @include modifier(items-cross-stretch) {
+        align-items: stretch; // default
+    }
+
+    // align-content
+
+    @include modifier(lines-cross-start) {
+        align-content: flex-start;
+    }
+
+    @include modifier(lines-cross-end) {
+        align-content: flex-end;
+    }
+
+    @include modifier(lines-cross-center) {
+        align-content: center;
+    }
+
+    @include modifier(lines-cross-around) {
+        align-content: space-around;
+    }
+
+    @include modifier(lines-cross-between) {
+        align-content: space-between;
+    }
+
+    @include modifier(lines-cross-stretch) {
+        align-content: stretch; // default
+    }
+}
+
+/*
+ * elements
+ */
+
+@include attribute(container\.item) {
+
+    // display
+
+    @include modifier(hide) {
+        display: none;
+    }
+
+    // max-width
+
+    @include modifier(width-cap) {
+        max-width: $container-width-cap;
+    }
+
+    // width
+    @include width();
+
+    // flex grow
+
+    @include modifier(width-grow) {
+        flex-grow: 1;
+    }
+
+    // flex shrink
+
+    //@include modifier(shrink) {
+    //    flex-shrink: 1;
+    //}
+    //
+    //@include modifier(shrink-none) {
+    //    flex-shrink: 0;
+    //}
+
+    // align-self
+
+    @include modifier(cross-start) {
+        align-self: flex-start;
+    }
+
+    @include modifier(cross-end) {
+        align-self: flex-end;
+    }
+
+    @include modifier(cross-center) {
+        align-self: center;
+    }
+
+    @include modifier(cross-baseline) {
+        align-self: baseline;
+    }
+
+    @include modifier(stretch) {
+        align-self: stretch;
+    }
+}

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unity</title>
+    <meta charset='utf-8'>
+    <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href="bin/css/unity-2.0.0.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            margin: 25px;
+            color: #55595c;
+        }
+
+        a {
+            color: hsl(20, 100%, 60%);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* TITLE */
+
+        .title {
+            border-bottom: 2px solid hsl(0, 0%, 30%);
+        }
+
+        .title__name {
+            font-family: 'Anonymous Pro', cursive;
+            text-shadow: .03em .03em hsl(40, 100%, 50%);
+            color: hsl(0, 0%, 30%);
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .title__desc {
+            font-family: 'Arvo', cursive;
+            text-shadow: .1em .1em hsl(110, 100%, 100%);
+            font-size: 2rem;
+            line-height: 2;
+            font-weight: normal;
+        }
+
+        /* DOCUMENTATION */
+
+        .doc {
+            margin-top: 50px;
+            background-color: hsl(110, 100%, 100%);
+            border-radius: 5px;
+        }
+
+        .doc__name {
+            font-family: 'Arvo', cursive;
+            font-size: 2rem;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+
+        .doc__desc {
+            font-family: 'Anonymous Pro', cursive;
+            font-size: 1.2rem;
+            line-height: 3;
+        }
+
+        .doc__code {
+            background-color: hsl(0, 0%, 97%);
+            border: .1rem solid hsl(0, 0%, 80%);
+            border-left-width: .5rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .doc__demo {
+            margin: 2rem 0;
+        }
+
+        .doc__demo [container] {
+            border-radius: .5rem;
+            border: .1rem solid hsl(20, 100%, 50%);
+            background-color: hsl(20, 100%, 90%);
+            border-left-width: .5rem;
+            padding: .75rem;
+        }
+
+        .doc__demo [container].height-cap {
+            max-height: 350px;
+        }
+
+        .doc__demo [container] > * {
+            padding: .75rem;
+        }
+
+        .doc__demo [container] > * > * {
+            border-radius: .5rem;
+            border: .1rem solid hsl(40, 100%, 50%);
+            background-color: hsl(40, 100%, 90%);
+            border-top-width: .5rem;
+            padding: .5rem 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div container="items-main-center">
+        <div container.item="width-1/1 width-cap" container="items-tb">
+
+            <div class="title">
+                <h1 class="title__name">Unity 2.0</h1>
+                <h2 class="title__desc">Let's make CSS fun</h2>
+            </div>
+
+            <div class="content"></div>
+    </div>
+
+    <script>
+        function clean(str) {
+            var elem = document.createElement('div');
+            elem.textContent = str;
+            return elem.innerHTML;
+        }
+
+         function createNode(object, parent) {
+             const node = document.createElement('div'),
+                   link = (parent ? parent + '=' : '') + object.name;
+             node.innerHTML = `
+                <div class="doc" id="${link}">
+                    <h3 class="doc__name">${object.name}</h3>
+                    <p class="doc__desc">${object.desc} <a href="#${link}">\u00b6</a></p></p>
+                    <div class="doc__code">${clean(object.code)}</div>
+                    <div class="doc__demo">${object.demo}</div>
+                </div>`;
+            return node;
+        }
+
+        const descriptions = {
+            containerNoWrap: function(mainStart, mainEnd) {
+                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will not wrap`;
+            },
+            containerWraps: function(mainStart, mainEnd, crossStart, crossEnd) {
+                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will wrap from ${crossStart} to ${crossEnd}`;
+            }
+
+        };
+
+        const container = document.querySelector('.content');
+        const content = [
+            {
+                name: 'container',
+                desc: 'Main container object',
+                code: '<div container>',
+                demo: `<div container>
+                        <div>
+                            <div>1</div>
+                        </div>
+                    </div>`,
+                modifiers: [
+//                    {
+//                        name: 'inline',
+//                        desc: 'blah blah',
+//                        code: '<div container="inline">',
+//                        demo: `
+//                            <div container="inline width-1/2">
+//                                <div>1</div>
+//                            </div><div container="inline width-1/2">
+//                                <div>2</div>
+//                            </div>
+//                        `
+//                    },
+                    {
+                        name: 'hide',
+                        desc: 'Hides container from view',
+                        code: `<div container="hide">`,
+                        demo: ``
+                    },
+                    {
+                        name: 'items-lr',
+                        desc: descriptions.containerNoWrap('left', 'right'),
+                        code: '<div container="items-lr">',
+                        demo: `<div container="items-lr">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-lr-tb',
+                        desc: descriptions.containerWraps('left', 'right', 'top', 'bottom'),
+                        code: '<div container="items-lr-tb">',
+                        demo: `<div container="items-lr-tb width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-lr-bt',
+                        desc: descriptions.containerWraps('left', 'right', 'bottom', 'top'),
+                        code: '<div container="items-lr-bt">',
+                        demo: `<div container="items-lr-bt width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl',
+                        desc: descriptions.containerNoWrap('right', 'left'),
+                        code: '<div container="items-rl">',
+                        demo: `<div container="items-rl width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl-tb',
+                        desc: descriptions.containerWraps('right', 'left', 'top', 'bottom'),
+                        code: '<div container="items-rl-tb">',
+                        demo: `<div container="items-rl-tb width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl-bt',
+                        desc: descriptions.containerWraps('right', 'left', 'bottom', 'top'),
+                        code: '<div container="items-rl-bt">',
+                        demo: `<div container="items-rl-bt width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb',
+                        desc: descriptions.containerNoWrap('top', 'bottom'),
+                        code: '<div container="items-tb">',
+                        demo: `<div container="items-tb">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb-lr',
+                        desc: descriptions.containerWraps('top', 'bottom', 'left', 'right'),
+                        code: '<div container="items-tb-lr">',
+                        demo: `<div container="items-tb-lr" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb-rl',
+                        desc: descriptions.containerWraps('top', 'bottom', 'right', 'left'),
+                        code: '<div container="items-tb-rl">',
+                        demo: `<div container="items-tb-rl" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt',
+                        desc: descriptions.containerNoWrap('bottom', 'top'),
+                        code: '<div container="items-bt">',
+                        demo: `<div container="items-bt">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt-lr',
+                        desc: descriptions.containerWraps('bottom', 'top', 'left', 'right'),
+                        code: '<div container="items-bt-lr">',
+                        demo: `<div container="items-bt-lr" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt-rl',
+                        desc: descriptions.containerWraps('bottom', 'top', 'right', 'left'),
+                        code: '<div container="items-bt-rl">',
+                        demo: `<div container="items-bt-rl" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'width-[numerator]/[denominator]',
+                        desc: 'Sets container or item width by fractions of 12ths or 5ths.',
+                        code: '<div container="items-1/2"> or <div container.item="1/2">',
+                        demo: `<div container="items-tb">
+                                <div container.item="width-1/12"><div>1/12</div></div>
+                                <div container.item="width-2/12"><div>2/12 or 1/6</div></div>
+                                <div container.item="width-3/12"><div>3/12 or 1/4</div></div>
+                                <div container.item="width-4/12"><div>4/12 or 1/3</div></div>
+                                <div container.item="width-5/12"><div>5/12</div></div>
+                                <div container.item="width-6/12"><div>6/12 or 1/2</div></div>
+                                <div container.item="width-7/12"><div>7/12</div></div>
+                                <div container.item="width-8/12"><div>8/12 or 2/3</div></div>
+                                <div container.item="width-9/12"><div>9/12 or 3/4</div></div>
+                                <div container.item="width-10/12"><div>10/12 or 5/6</div></div>
+                                <div container.item="width-11/12"><div>11/12</div></div>
+                                <div container.item="width-12/12"><div>12/12 or 1/1</div></div>
+                                <div container.item="width-1/5"><div>1/5</div></div>
+                                <div container.item="width-2/5"><div>2/5</div></div>
+                                <div container.item="width-3/5"><div>3/5</div></div>
+                                <div container.item="width-4/5"><div>4/5</div></div>
+                                <div container.item="width-5/5"><div>5/5</div></div>
+                            </div>`
+                    },
+                ],
+                children: [
+                    {
+                        name: 'container.item',
+                        desc: 'blah blah',
+                        code: '<div container.item>',
+                        demo: null
+                    }
+                ]
+            }
+        ];
+
+        content.forEach(function(object) {
+            const node = createNode(object);
+
+            object.modifiers.forEach(function(item) {
+                node.appendChild(createNode(item, object.name));
+            });
+
+            object.children.forEach(function(item) {
+                node.appendChild(createNode(item, object.name));
+            });
+
+            container.appendChild(node);
+        });
+    </script>
+</body>
+</html>

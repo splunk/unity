@@ -1,47 +1,67 @@
-// Configuration
+// configuration
+
+$config-path-svg: '../svg/';
+
+// breakpoints
+
+$breakpoint-keys: (xs,    sm,    md,    lg,    xl);
+$breakpoint-vals: (34rem, 48rem, 64rem, 80rem);
+
+// container
+
+$container-width-cap: 80rem;
+
+// font
 
 $font-path: '../font/';
-$svg-path: '../svg/';
+$font-list: (ProximaNovaRegular, ProximaNovaBold, ProximaNovaExtrabold);
 
-// Breakpoints
 
-$breakpoints: (
-    xs: 0,
-    sm: 34rem,
-    md: 48rem,
-    lg: 64rem,
-    xl: 80rem,
-);
+// text
 
-// Font size
+$text-line-height:      1.5;
+$text-font-size:        0.875em;
+$text-font-size-small:  0.75em;
+$text-color:            #474444;
 
-$font-size-base:        14px;
-$font-size-small:       12px;
-$font-size-heading1:    48px;
-$font-size-heading2:    32px;
-$font-size-heading3:    24px;
-$font-size-heading4:    14px;
-$font-size-heading5:    14px;
-$font-size-heading6:    12px;
+$text-font-family:      ProximaNovaRegular, Arial, sans-serif;
+$text-font-family-bold: ProximaNovaBold, Arial, sans-serif;
 
-// Line height
+// heading
 
-$line-height-base:      1.5;
-$line-height-heading:   1.2;
+$heading-font-size-1:      3em;
+$heading-font-size-2:      2em;
+$heading-font-size-3:      1.5em;
+$heading-font-size-4:      0.875em;
+$heading-font-size-5:      0.875em;
+$heading-font-size-6:      0.75em;
 
-// Color
+$heading-line-height:       2;
 
-$color-base:            #474444;
-$color-heading:         #2d2d2d;
-$color-heading-gray:    #939498;
-$color-heading-white:   #ffffff;
+$heading-color:             #2d2d2d;
+$heading-color-gray:        #939498;
+$heading-color-white:       #ffffff;
 
-// Links
+$heading-font-family-1:    ProximaNovaExtrabold, Arial, sans-serif;
+$heading-font-family-2:    ProximaNovaExtrabold, Arial, sans-serif;
+$heading-font-family-3:    ProximaNovaExtrabold, Arial, sans-serif;
+$heading-font-family-4:    ProximaNovaExtrabold, Arial, sans-serif;
+$heading-font-family-5:    ProximaNovaBold, Arial, sans-serif;
+$heading-font-family-6:    ProximaNovaBold, Arial, sans-serif;
+
+// links
 
 $link-font-color:       #03a2d6;
 $link-font-color-gray:  #939498;
 $link-font-color-black: #474444;
 $link-font-color-white: #ffffff;
+
+// divider
+
+$divider-border-color: #eeeeee;
+$divider-border-color-dark: #d6d6d6;
+
+/* OLD */
 
 // Inputs
 
@@ -104,8 +124,3 @@ $container-border-dropzone-hover: 1px dashed #939498;
 $container-bg-color-white: #ffffff;
 $container-bg-color-gray: #eeeeee;
 $container-bg-color-dropzone: #f9f9f9;
-
-// Divider
-
-$divider-border-color: #eeeeee;
-$divider-border-color-dark: #d6d6d6;

@@ -1,0 +1,7 @@
+@include attribute(divider) {
+    border-bottom: 1px solid $divider-border-color;
+
+    @include modifier(dark) {
+        border-color: $divider-border-color-dark;
+    }
+}
