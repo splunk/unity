@@ -1,14 +1,18 @@
 {
     "name": "unity",
-  	"version": "0.0.1",
+  	"version": "0.2.0",
   	"private": true,
     "devDependencies": {
-        "gulp-sass": "latest",
         "gulp-rename": "latest",
         "gulp-uglify": "latest",
-        "gulp-sourcemaps": "latest"
+        "gulp-sass": "latest",
+        "gulp-cssnano": "latest",
+        "gulp-sourcemaps": "latest",
+        "gulp-postcss": "latest",
+        "css-mqpacker": "latest",
+        "autoprefixer": "latest"
     },
     "scripts": {
-        "preinstall": "npm install -g gulp"
+        "preinstall": "#npm install -g gulp"
     }
 }

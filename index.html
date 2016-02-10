@@ -3,272 +3,388 @@
 <head>
     <title>Unity</title>
     <meta charset='utf-8'>
-    
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="unity-0.0.3/style/unity.min.css">
-    
+    <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href="bin/css/unity-2.0.0.min.css" rel="stylesheet" type="text/css">
     <style>
-        .demo section {
-            margin: 40px 0 40px;
+        body {
+            margin: 25px;
+            color: #55595c;
         }
-        .demo pre {
-            margin-bottom: 10px;
-            padding: 10px;
+
+        a {
+            color: hsl(20, 100%, 60%);
+            text-decoration: none;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* TITLE */
+
+        .title {
+            border-bottom: 2px solid hsl(0, 0%, 30%);
+        }
+
+        .title__name {
+            font-family: 'Anonymous Pro', cursive;
+            text-shadow: .03em .03em hsl(40, 100%, 50%);
+            color: hsl(0, 0%, 30%);
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .title__desc {
+            font-family: 'Arvo', cursive;
+            text-shadow: .1em .1em hsl(110, 100%, 100%);
+            font-size: 2rem;
+            line-height: 2;
+            font-weight: normal;
+        }
+
+        /* DOCUMENTATION */
+
+        .doc {
+            margin-top: 50px;
+            background-color: hsl(110, 100%, 100%);
+            border-radius: 5px;
+        }
+
+        .doc__name {
+            font-family: 'Arvo', cursive;
+            font-size: 2rem;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+
+        .doc__desc {
+            font-family: 'Anonymous Pro', cursive;
+            font-size: 1.2rem;
+            line-height: 3;
+        }
+
+        .doc__code {
+            background-color: hsl(0, 0%, 97%);
+            border: .1rem solid hsl(0, 0%, 80%);
+            border-left-width: .5rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .doc__demo {
+            margin: 2rem 0;
+        }
+
+        .doc__demo [container] {
+            border-radius: .5rem;
+            border: .1rem solid hsl(20, 100%, 50%);
+            background-color: hsl(20, 100%, 90%);
+            border-left-width: .5rem;
+            padding: .75rem;
+        }
+
+        .doc__demo [container].height-cap {
+            max-height: 350px;
+        }
+
+        .doc__demo [container] > * {
+            padding: .75rem;
+        }
+
+        .doc__demo [container] > * > * {
+            border-radius: .5rem;
+            border: .1rem solid hsl(40, 100%, 50%);
+            background-color: hsl(40, 100%, 90%);
+            border-top-width: .5rem;
+            padding: .5rem 1rem;
+        }
+
     </style>
-    
 </head>
 <body>
-    <div id="container">
-        <div class="inner">
 
-            <header>
-                <h1>Unity</h1>
-                <h2>CSS bootstraping for Splunk style guidelines</h2>
-                <a href="https://github.com/splunk/unity">View on GitHub</a>
-            </header>
+    <div container="items-main-center">
+        <div container.item="width-1/1 width-cap" container="items-tb">
 
-            <div id="main_content" class="demo">
-
-                <h1>Containers</h1>
-
-                <section u-core>
-                    <pre>&ltdiv u-container&gt</pre>
-                    <div u-container>
-                        <p>Container</p>
-                    </div>
-                </section>
-
-                <section u-core>
-                    <pre>&ltdiv u-container="gray"&gt</pre>
-                    <div u-container="gray">
-                        <p>Gray container</p>
-                    </div>
-                </section>
-
-                <section u-core>
-                    <pre>&ltdiv u-container="dropzone"&gt<br>&ltscript&gtnew unity.DropZone(elem).drop(callback)&lt/script&gt</pre>
-                    <div u-container="dropzone">
-                        <p>Dropzone container</p>
-                    </div>
-                </section>
-
-                <h1>Headers</h1>
-
-                <section u-core>
-                    <pre>&lth1&gt</pre>
-                    <h1>Heading 1</h1>
-                </section>
-
-                <section u-core>
-                    <pre>&ltp u-heading="1|2|3|4|5|6"&gt</pre>
-                    <p u-heading="1">Heading by attribute</p>
-                </section>
-
-                <section u-core>
-                    <pre>&lth1 u-heading="gray|grey"&gt</pre>
-                    <h1 u-heading="gray">Gray heading</h1>
-                </section>
-
-                <section u-core>
-                   <pre>&lth1 u-heading="white"&gt</pre>
-                   <h1 u-heading="white">White heading</h1>
-                </section>
-
-                <section u-core>
-                    <pre>&lth2&gt</pre>
-                    <h2>Heading 2</h2>
-                </section>
-
-                <section u-core>
-                    <pre>&lth3&gt</pre>
-                    <h3>Heading 3</h3>
-                </section>
-
-                <section u-core>
-                    <pre>&lth4&gt</pre>
-                    <h4>Heading 4</h4>
-                </section>
-
-                <section u-core>
-                    <pre>&lth5&gt</pre>
-                    <h5>Heading 5</h5>
-                </section>
-
-                <section u-core>
-                    <pre>&lth6&gt</pre>
-                    <h6 u-heading="6">Heading 6</h6>
-                </section>
-
-                <h1>Text</h1>
-
-                <section u-core>
-                    <pre>&ltp&gt</pre>
-                    <p>Entium voluptatum deleniti atque corrupti quos dolores et quas molestias est et expedita distinctio. Nam libero tempore, cum soluta nobis est quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                </section>
-
-                <section u-core>
-                    <pre>&ltsmall&gt</pre>
-                    <small>"small text"</small>
-                </section>
-
-                <section u-core>
-                    <pre>&ltspan u-small&gt</pre>
-                    <span u-small>"small text by attribute"</span>
-                </section>
-
-                <h1>Links</h1>
-
-                <section u-core>
-                    <pre>&lta&gt</pre>
-                    <p><a href="#">Standard link</a></p>
-                </section>
-
-                <section u-core>
-                    <pre>&ltspan u-link&gt</pre>
-                    <p><span u-link>Link by attribute</span></p>
-                </section>
-
-                <section u-core>
-                    <pre>&lta u-link="black"&gt</pre>
-                    <p><a u-link="black" href="#">Black link</a></p>
-                </section>
-
-                <section u-core>
-                    <pre>&lta u-link="gray|grey"&gt</pre>
-                    <p><a u-link="gray" href="#">Gray link</a></p>
-                </section>
-
-                <section u-core>
-                    <pre>&lta u-link="no-underline"&gt</pre>
-                    <p><a u-link="no-underline" href="#">Link without underline</a></p>
-                </section>
-
-                <h1>Buttons</h1>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn&gt</pre>
-                    <button u-btn>Button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&lta u-btn&gt</pre>
-                    <a u-btn href="#">Button as link</a>
-                </section>
-
-                <section u-core>
-                    <pre>&ltselect u-btn&gt</pre>
-                    <select u-btn>
-                        <option>Button as dropdown</option>
-                        <option>Thing 1</option>
-                        <option>Thing 2</option>
-                    </select>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn disabled&gt</pre>
-                    <button u-btn disabled>Button disabled</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="lg"&gt</pre>
-                    <button u-btn="lg">Large button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="sm"&gt</pre>
-                    <button u-btn="sm">Small button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltu-btn="xs"&gt</pre>
-                    <button u-btn="xs">Extra small button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="stretch"&gt</pre>
-                    <button u-btn="stretch">Stretch button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="blue"&gt</pre>
-                    <button u-btn="blue">Blue button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="blue" disabled&gt</pre>
-                    <button u-btn="blue" disabled>Blue button disabled</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="white"&gt</pre>
-                    <button u-btn="white">White button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="white" disabled&gt</pre>
-                    <button u-btn="white" disabled>White button disabled</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="red"&gt</pre>
-                    <button u-btn="red">Red button</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="red" disabled&gt</pre>
-                    <button u-btn="red" disabled>Red button disabled</button>
-                </section>
-
-                <section u-core>
-                    <pre>&ltbutton u-btn="no-hover"&gt</pre>
-                    <button u-btn="no-hover">Button no hover</button>
-                </section>
-
-                <h1>Inputs</h1>
-
-                <section u-core>
-                    <pre>&ltinput id="x" type="checkbox"&gt&ltlabel for="x"&gt&lt/label&gt</pre>
-                    <input id="c1" type="checkbox">
-                    <label for="c1">Checkbox</label>
-                </section>
-
-                <section u-core>
-                    <pre>&ltinput id="x" type="radio"&gt&ltlabel for="x"&gt&lt/label&gt</pre>
-
-                        <input id="r1" type="radio" name="r0">
-                        <label for="r1">Radio Foo</label>
-
-                        <input id="r2" type="radio" name="r0">
-                        <label for="r2">Radio Bar</label>
-
-                </section>
-
-                <section u-core>
-                    <pre>&ltinput disabled&gt</pre>
-                    <input id="cd1" type="checkbox" disabled checked>
-                    <label for="cd1">Selected Checkbox Disabled</label>
-
-                    <input id="cd2" type="checkbox" disabled>
-                    <label for="cd2">Checkbox Disabled</label>
-
-                    <input id="rd1" type="radio" name="rd0" disabled checked>
-                    <label for="rd1">Selected Radio Disabled</label>
-
-                    <input id="rd2" type="radio" name="rd0" disabled>
-                    <label for="rd2">Radio Disabled</label>
-                </section>
-
+            <div class="title">
+                <h1 class="title__name">Unity 2.0</h1>
+                <h2 class="title__desc">Let's make CSS fun</h2>
             </div>
-        </div>
+
+            <div class="content"></div>
     </div>
 
-    <script src="unity-0.0.3/script/unity.min.js"></script>
     <script>
-        var elem = document.querySelector('[u-container~="dropzone"]'),
-            dz = new unity.DropZone(elem);
-    </script>
+        function clean(str) {
+            var elem = document.createElement('div');
+            elem.textContent = str;
+            return elem.innerHTML;
+        }
 
+         function createNode(object, parent) {
+             const node = document.createElement('div'),
+                   link = (parent ? parent + '=' : '') + object.name;
+             node.innerHTML = `
+                <div class="doc" id="${link}">
+                    <h3 class="doc__name">${object.name}</h3>
+                    <p class="doc__desc">${object.desc} <a href="#${link}">\u00b6</a></p></p>
+                    <div class="doc__code">${clean(object.code)}</div>
+                    <div class="doc__demo">${object.demo}</div>
+                </div>`;
+            return node;
+        }
+
+        const descriptions = {
+            containerNoWrap: function(mainStart, mainEnd) {
+                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will not wrap.`;
+            },
+            containerWraps: function(mainStart, mainEnd, crossStart, crossEnd) {
+                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will wrap from ${crossStart} to ${crossEnd}`;
+            }
+
+        };
+
+        const container = document.querySelector('.content');
+        const content = [
+            {
+                name: '@responsive',
+                desc: 'Sets sizing specific rules to elements',
+                code: '<div container@[size]="[modifier]">',
+                demo: `<div container="items-tb">
+                        <div container.item="width-1/2" container.item@xs="width-1/1"><div>Wide @ Extra Small</div></div>
+                        <div container.item="width-1/2" container.item@sm="width-1/1"><div>Wide @ Small</div></div>
+                        <div container.item="width-1/2" container.item@md="width-1/1"><div>Wide @ Medium</div></div>
+                        <div container.item="width-1/2" container.item@lg="width-1/1"><div>Wide @ Large</div></div>
+                        <div container.item="width-1/2" container.item@xl="width-1/1"><div>Wide @ Extra Large</div></div>
+                    </div>`
+            },
+            {
+                name: 'container',
+                desc: 'Main container object',
+                code: '<div container>',
+                demo: `<div container>
+                        <div><div>1</div></div>
+                    </div>`,
+                modifiers: [
+//                    {
+//                        name: 'inline',
+//                        desc: 'blah blah',
+//                        code: '<div container="inline">',
+//                        demo: `
+//                            <div container="inline width-1/2">
+//                                <div>1</div>
+//                            </div><div container="inline width-1/2">
+//                                <div>2</div>
+//                            </div>
+//                        `
+//                    },
+                    {
+                        name: 'hide',
+                        desc: 'Hides container from view',
+                        code: `<div container="hide">`,
+                        demo: ``
+                    },
+                    {
+                        name: 'items-lr',
+                        desc: descriptions.containerNoWrap('left', 'right') + ' This is the default setting.',
+                        code: '<div container="items-lr">',
+                        demo: `<div container="items-lr">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-lr-tb',
+                        desc: descriptions.containerWraps('left', 'right', 'top', 'bottom'),
+                        code: '<div container="items-lr-tb">',
+                        demo: `<div container="items-lr-tb width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-lr-bt',
+                        desc: descriptions.containerWraps('left', 'right', 'bottom', 'top'),
+                        code: '<div container="items-lr-bt">',
+                        demo: `<div container="items-lr-bt width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl',
+                        desc: descriptions.containerNoWrap('right', 'left'),
+                        code: '<div container="items-rl">',
+                        demo: `<div container="items-rl width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl-tb',
+                        desc: descriptions.containerWraps('right', 'left', 'top', 'bottom'),
+                        code: '<div container="items-rl-tb">',
+                        demo: `<div container="items-rl-tb width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-rl-bt',
+                        desc: descriptions.containerWraps('right', 'left', 'bottom', 'top'),
+                        code: '<div container="items-rl-bt">',
+                        demo: `<div container="items-rl-bt width-1/4">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb',
+                        desc: descriptions.containerNoWrap('top', 'bottom'),
+                        code: '<div container="items-tb">',
+                        demo: `<div container="items-tb">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb-lr',
+                        desc: descriptions.containerWraps('top', 'bottom', 'left', 'right'),
+                        code: '<div container="items-tb-lr">',
+                        demo: `<div container="items-tb-lr" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-tb-rl',
+                        desc: descriptions.containerWraps('top', 'bottom', 'right', 'left'),
+                        code: '<div container="items-tb-rl">',
+                        demo: `<div container="items-tb-rl" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt',
+                        desc: descriptions.containerNoWrap('bottom', 'top'),
+                        code: '<div container="items-bt">',
+                        demo: `<div container="items-bt">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt-lr',
+                        desc: descriptions.containerWraps('bottom', 'top', 'left', 'right'),
+                        code: '<div container="items-bt-lr">',
+                        demo: `<div container="items-bt-lr" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'items-bt-rl',
+                        desc: descriptions.containerWraps('bottom', 'top', 'right', 'left'),
+                        code: '<div container="items-bt-rl">',
+                        demo: `<div container="items-bt-rl" class="height-cap">
+                                <div><div>1</div></div>
+                                <div><div>2</div></div>
+                                <div><div>3</div></div>
+                                <div><div>4</div></div>
+                                <div><div>5</div></div>
+                                <div><div>6</div></div>
+                            </div>`
+                    },
+                    {
+                        name: 'width-[numerator]/[denominator]',
+                        desc: 'Sets container or item width by fractions of 12ths or 5ths.',
+                        code: '<div container="items-1/2"> or <div container.item="1/2">',
+                        demo: `<div container="items-tb">
+                                <div container.item="width-1/12"><div>1/12</div></div>
+                                <div container.item="width-2/12"><div>2/12 or 1/6</div></div>
+                                <div container.item="width-3/12"><div>3/12 or 1/4</div></div>
+                                <div container.item="width-4/12"><div>4/12 or 1/3</div></div>
+                                <div container.item="width-5/12"><div>5/12</div></div>
+                                <div container.item="width-6/12"><div>6/12 or 1/2</div></div>
+                                <div container.item="width-7/12"><div>7/12</div></div>
+                                <div container.item="width-8/12"><div>8/12 or 2/3</div></div>
+                                <div container.item="width-9/12"><div>9/12 or 3/4</div></div>
+                                <div container.item="width-10/12"><div>10/12 or 5/6</div></div>
+                                <div container.item="width-11/12"><div>11/12</div></div>
+                                <div container.item="width-12/12"><div>12/12 or 1/1</div></div>
+                                <div container.item="width-1/5"><div>1/5</div></div>
+                                <div container.item="width-2/5"><div>2/5</div></div>
+                                <div container.item="width-3/5"><div>3/5</div></div>
+                                <div container.item="width-4/5"><div>4/5</div></div>
+                                <div container.item="width-5/5"><div>5/5</div></div>
+                            </div>`
+                    }
+                ],
+                children: [
+//                    {
+//                        name: 'container.item',
+//                        desc: 'blah blah',
+//                        code: '<div container.item>',
+//                        demo: null
+//                    }
+                ]
+            }
+        ];
+
+        content.forEach(function(object) {
+            const node = createNode(object);
+
+            if (object.modifiers) {
+                object.modifiers.forEach(function (item) {
+                    node.appendChild(createNode(item, object.name));
+                });
+            }
+
+            if (object.children) {
+                object.children.forEach(function(item) {
+                    node.appendChild(createNode(item, object.name));
+                });
+            }
+
+            container.appendChild(node);
+        });
+    </script>
 </body>
 </html>

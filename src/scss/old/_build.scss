@@ -1,0 +1,64 @@
+
+@mixin build-items($size) {
+    @include container($size);
+}
+
+@mixin build() {
+    /**
+     * SASS doesn't yet support Interpolation for mixins, so this is a bit hacky still.
+     * https://github.com/sass/sass/issues/626
+     */
+
+
+    /*
+        xs:         <= xs
+        md:         >= md - 1 & <= md
+        md-up:      >= md - 1
+        md-down:    <= md
+        xl:         >= xl
+    */
+
+    $breakpoint-keys-length: length($breakpoint-keys);
+
+    // defaults
+    @include build-items('');
+
+    @for $i from 1 through length($breakpoint-keys) {
+
+        $breakpoint-key: '\\@' + nth($breakpoint-keys, $i);
+
+        @if $i == 1 {
+            // first
+            $breakpoint-val: nth($breakpoint-vals, $i);
+
+            @media screen and (max-width: $breakpoint-val) {
+                @include build-items($breakpoint-key);
+            }
+
+        } @else if $i == $breakpoint-keys-length {
+             // last
+            $breakpoint-val: nth($breakpoint-vals, $i - 1);
+
+            @media screen and (min-width: $breakpoint-val) {
+                @include build-items($breakpoint-key);
+            }
+
+        } @else {
+            // middle
+            $breakpoint-val: nth($breakpoint-vals, $i);
+            $breakpoint-val-prev: nth($breakpoint-vals, $i - 1);
+
+            @media screen and (min-width: $breakpoint-val-prev) and (max-width: $breakpoint-val) {
+                @include build-items($breakpoint-key);
+            }
+
+            @media screen and (min-width: $breakpoint-val-prev) {
+                @include build-items($breakpoint-key + '-up');
+            }
+
+            @media screen and (max-width: $breakpoint-val) {
+                @include build-items($breakpoint-key + '-down');
+            }
+        }
+    }
+}

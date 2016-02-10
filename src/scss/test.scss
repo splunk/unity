@@ -1,0 +1,20 @@
+$breakpoint-keys: (sm, md, lg);
+$breakpoint-vals: (1rem, 2rem);
+
+@import 'utils/mixins';
+@import 'utils/functions';
+
+@include attribute(container) {
+    display: block;
+    @include modifier(hide) {
+        display: none;
+    }
+}
+
+@include attribute(container__item) {
+    display: block;
+    @include modifier(inline) {
+        display: inline;
+    }
+}
+

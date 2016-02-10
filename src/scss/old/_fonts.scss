@@ -3,9 +3,8 @@
 @mixin font-face($font-family, $file-path) {
     @font-face {
         font-family: $font-family;
-        src: url('#{$font-path}#{$file-path}.woff2') format('embedded-opentype'),
-             url('#{$font-path}#{$file-path}.woff') format('woff'),
-             url('#{$font-path}#{$file-path}.ttf') format('truetype');
+        src: url('#{$font-path}#{$file-path}.woff2') format('woff2'),
+             url('#{$font-path}#{$file-path}.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
