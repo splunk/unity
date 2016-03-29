@@ -17,7 +17,8 @@ var filename = 'unity-2.0.0.min';
 //}
 
 function watchTask() {
-    gulp.watch('./src/js/unity.js', ['js']);
+    //gulp.watch('./src/js/unity.js', ['js']);
+    cssTask();
     gulp.watch('./src/scss/**/*.scss', ['css']);
 }
 
@@ -48,4 +49,4 @@ function cssTask() {
 //gulp.task('js', jsTask);
 gulp.task('css', cssTask);
 gulp.task('watch', watchTask);
-gulp.task('build', ['js', 'css']);
+gulp.task('build', ['css']);

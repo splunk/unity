@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <meta charset='utf-8'>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font: 1em/1 "Courier New", courier, monospace;
+        }
+
+        section {
+            margin: 2em;
+            background-color: hsl(0, 0%, 97%);
+            border: .1rem solid hsl(0, 0%, 80%);
+            border-left-width: .5rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        section h2 {
+            line-height: 2;
+            text-decoration: underline;
+        }
+
+        section h4 {
+            line-height: 3;
+            font-style: italic;
+        }
+
+        section p {
+            line-height: 2;
+        }
+
+        section pre {
+            border-radius: .5rem;
+            border: .1rem solid hsl(40, 100%, 50%);
+            background-color: hsl(40, 100%, 90%);
+            border-top-width: .5rem;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>UnityElement Class</h2>
+        <p>Base class for all WebComponents</p>
+        <h4>JavaScript</h4>
+<pre>class UnityElement extends HTMLElement {
+    static register(tagName) {
+        ...
+    }
+
+    created() {
+        ...
+    }
+
+    attached() {
+        ...
+    }
+
+    detached() {
+        ...
+    }
+
+    attrChanged(attrName, oldVal, newVal) {
+        ...
+    }
+}</pre>
+    </section>
+
+    <section>
+        <h2>UnityCtx Class</h2>
+        <p>Inert HTML element for use with other Unity Web Components</p>
+        <h4>Hypertext Markup Language</h4>
+<pre>&lt;u-ctx&gt;
+    ...
+&lt;/u-ctx&gt;</pre>
+    </section>
+
+    <section>
+        <h2>UnityCarousel Class</h2>
+        <p>Unity carousel implementation</p>
+        <h4>JavaScript</h4>
+        <pre>class UnityCarousel extends UnityElement {
+    next() {
+        ...
+    }
+
+    prev() {
+        ...
+    }
+
+    index(i) {
+        ...
+    }
+
+    addListener(fn) {
+        ...
+    }
+
+    removeListener(fn) {
+        ...
+    }
+}</pre>
+        <h4>Hypertext Markup Language</h4>
+        <pre>
+&lt;u-carousel&gt;
+
+    &lt;u-ctx&gt;
+        &lt;img scr="1.png"&gt;
+    &lt;/u-ctx&gt;
+
+    &lt;u-ctx&gt;
+        &lt;img scr="2.png"&gt;
+    &lt;/u-ctx&gt;
+
+&lt;/u-carousel&gt;
+        </pre>
+    </section>
+
+    <section>
+        <h2>UnityCarouselSelect Class</h2>
+        <p>Unity carousel interaction element</p>
+        <h4>JavaScript</h4>
+<pre>class UnityCarouselSelect extends UnityElement {
+    onChange() {
+        ...
+    }
+}</pre>
+
+        <h4>Hypertext Markup Language</h4>
+<pre>&lt;u-carousel-select u-selector="#my-carousel" u-index="4"&gt;
+     &lt;img scr="thumbnail-1.png"&gt;
+&lt;/u-carousel-select&gt;</pre>
+
+    </section>
+
+    <section>
+        <h2>UnityTooltip Class</h2>
+        <p>Unity tooltip implementation</p>
+        <h4>JavaScript</h4>
+<pre>class UnityTooltip extends UnityElement {
+    ...
+}</pre>
+        <h4>Hypertext Markup Language</h4>
+<pre>&lt;u-tooltip&gt;
+
+    &lt;u-ctx&gt;
+        &lt;p&gt;Need some &lt;a href="#help"&gt;Help&lt;/a&gt;?&lt;/p&gt;
+    &lt;/u-ctx&gt;
+
+    &lt;img scr="unclear-icon.png"&gt;
+
+&lt;/u-tooltip&gt;</pre>
+
+    </section>
+
+    <section>
+        <h2>UnityDrawer Class</h2>
+        <p>Unity drawer implementation</p>
+        <h4>JavaScript</h4>
+<pre>class UnityDrawer extends UnityElement {
+    open() {
+        ...
+    }
+    onOpen() {
+        ...
+    }
+    close() {
+        ...
+    }
+    onClose() {
+        ...
+    }
+}</pre>
+
+        <h4>Hypertext Markup Language</h4>
+<pre>&lt;u-drawer&gt;
+    ...
+&lt;/u-drawer&gt;</pre>
+
+    </section>
+
+</body>
+</html>

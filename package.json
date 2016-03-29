@@ -3,6 +3,7 @@
   	"version": "0.2.0",
   	"private": true,
     "devDependencies": {
+        "gulp": "latest",
         "gulp-rename": "latest",
         "gulp-uglify": "latest",
         "gulp-sass": "latest",
