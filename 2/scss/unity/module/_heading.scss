@@ -1,0 +1,55 @@
+@include element(heading) {
+
+    font-size: $heading-font-size-1;
+    font-family: $heading-font-family-1, Arial, sans-serif;
+    line-height: $heading-line-height;
+    color: $heading-color;
+    font-weight: normal;
+
+    @include modifier(1) {
+        font-size: $heading-font-size-1;
+        font-family: $heading-font-family-1, Arial, sans-serif;
+        text-transform: none;
+    }
+
+    @include modifier(2) {
+        font-size: $heading-font-size-2;
+        font-family: $heading-font-family-2, Arial, sans-serif;
+        text-transform: none;
+    }
+
+    @include modifier(3) {
+        font-size: $heading-font-size-3;
+        font-family: $heading-font-family-3, Arial, sans-serif;
+        text-transform: none;
+    }
+
+    @include modifier(4) {
+        font-size: $heading-font-size-4;
+        font-family: $heading-font-family-4, Arial, sans-serif;
+        text-transform: uppercase;
+    }
+
+    @include modifier(5) {
+        font-size: $heading-font-size-5;
+        font-family: $heading-font-family-5, Arial, sans-serif;
+        text-transform: none;
+    }
+
+    @include modifier(6) {
+        font-size: $heading-font-size-6;
+        font-family: $heading-font-family-6, Arial, sans-serif;
+        text-transform: uppercase;
+    }
+
+    // color
+
+    @include modifier(white) {
+        color: $heading-color-white;
+    }
+
+    @include modifier(gray) {
+        color: $heading-color-gray;
+    }
+
+}

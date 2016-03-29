@@ -1,0 +1,10 @@
+@include element(text) {
+    @include modifier(bold) {
+        font-family: $text-font-family-bold;
+        font-weight: normal;
+    }
+
+    @include modifier(small) {
+        font-size: $text-font-size-small;
+    }
+}
