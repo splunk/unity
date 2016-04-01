@@ -1,0 +1,307 @@
+@import '../util/mixins';
+
+.u-container {
+border: 1px solid red;
+}
+.u-container\.item {
+border: 1px solid blue;
+}
+
+// defaults
+
+.u-container {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+// display
+
+@mixin hide {
+    display: none;
+}
+
+.u-container\.hide {
+    @include hide;
+}
+
+// flex-wrap
+
+@include modifier(nowrap) {
+    flex-wrap: nowrap;
+}
+
+// padding
+
+@each $key, $val in $container-gutters {
+    @include modifier(gutter-#{$key}) {
+        flex-wrap: $val;
+
+        @include child-dest-mixin('<' x) {
+            display: inline;
+        }
+    }
+}
+
+//@include modifier(gutter-1) {
+//    padding: 0.5rem;
+//}
+//    @include child-gt-mixin('@at-root', width) {
+//        width: 100%;
+//    }
+//}
+//
+//@include modifier(gutter-1) {
+//    & > * {
+//        margin: 1rem;
+//    }
+//}
+//
+//@include modifier(gutter-2) {
+//    & > * {
+//        margin: 2rem;
+//    }
+//}
+
+// max-width
+
+@include modifier(width-cap) {
+    max-width: $container-width-cap;
+}
+
+// background-color
+
+@include modifier(bg-black) {
+    background-color: $container-color-black;
+}
+
+@include modifier(bg-gray) {
+    background-color: $container-color-black;
+}
+
+// flex-direction & flex-wrap
+
+//@include modifier(items-lr) {
+//    flex-direction: row;
+//    flex-wrap: nowrap;
+//}
+//
+//@include modifier(items-lr-tb) {
+//    flex-direction: row;
+//    flex-wrap: wrap;
+//}
+//
+//@include modifier(items-lr-bt) {
+//    flex-direction: row;
+//    flex-wrap: wrap-reverse;
+//}
+//
+//@include modifier(items-rl) {
+//    flex-direction: row-reverse;
+//    flex-wrap: nowrap;
+//}
+//
+//@include modifier(items-rl-tb) {
+//    flex-direction: row-reverse;
+//    flex-wrap: wrap;
+//}
+//
+//@include modifier(items-rl-bt) {
+//    flex-direction: row-reverse;
+//    flex-wrap: wrap-reverse;
+//}
+//
+//@include modifier(items-tb) {
+//    flex-direction: column;
+//    flex-wrap: nowrap;
+//}
+//
+//@include modifier(items-tb-lr) {
+//    flex-direction: column;
+//    flex-wrap: wrap;
+//}
+//
+//@include modifier(items-tb-rl) {
+//    flex-direction: column;
+//    flex-wrap: wrap-reverse;
+//}
+
+//@include modifier(items-bt) {
+//    flex-direction: column-reverse;
+//    flex-wrap: nowrap;
+//}
+
+//@include modifier(items-bt-lr) {
+//    flex-direction: column-reverse;
+//    flex-wrap: wrap;
+//}
+
+//@include modifier(items-bt-rl) {
+//    flex-direction: column-reverse;
+//    flex-wrap: wrap-reverse;
+//}
+
+
+/*
+justify-content
+    flex-start		items-left		*
+    flex-end 		items-right
+    center			items-center
+    space-between	items-repel
+    space-around	items-even
+
+align-items
+    flex-start		items-top
+    flex-end		items-bottom
+    center			items-vcenter
+    stretch 		items-tall		*
+    baseline		items-baseline
+
+align-content
+    flex-start		rows-top
+    flex-end 		rows-bottom
+    center			rows-center
+    stretch 		rows-tall		*
+    space-around	rows-even
+    space-between	rows-full
+
+align-self
+    flex-start		top
+    flex-end		bottom
+    center			vcenter
+    stretch 		tall
+    baseline		baseline
+*/
+
+// justify-content
+
+@include modifier(items-left) {
+    justify-content: flex-start;
+}
+
+@include modifier(items-right) {
+    justify-content: flex-end;
+}
+
+@include modifier(items-hcenter) {
+    justify-content: center;
+}
+
+@include modifier(items-repel) {
+    justify-content: space-between;
+}
+
+@include modifier(items-even) {
+    justify-content: space-around;
+}
+
+// align-items
+
+@include modifier(items-top) {
+    align-items: flex-start;
+}
+
+@include modifier(items-bottom) {
+    align-items: flex-end;
+}
+
+@include modifier(items-vcenter) {
+    align-items: center;
+}
+
+@include modifier(items-baseline) {
+    align-items: baseline;
+}
+
+@include modifier(items-tall) {
+    align-items: stretch;
+}
+
+// align-content
+
+@include modifier(rows-top) {
+    align-content: flex-start;
+}
+
+@include modifier(rows-bottom) {
+    align-content: flex-end;
+}
+
+@include modifier(rows-center) {
+    align-content: center;
+}
+
+@include modifier(rows-repel) {
+    align-content: space-around;
+}
+
+@include modifier(rows-even) {
+    align-content: space-between;
+}
+
+@include modifier(rows-tall) {
+    align-content: stretch;
+}
+
+/**
+ * item
+ */
+
+@include child(item) {
+
+    // defaults
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0.5rem;
+
+    // display
+
+    @include modifier(hide) {
+        display: none;
+    }
+
+    // flex grow
+
+    @include modifier(grow) {
+        flex-grow: 1;
+    }
+
+    // flex shrink
+
+    @include modifier(shrink) {
+        flex-shrink: 1;
+    }
+
+    // align-self
+
+    @include modifier(valign-top) {
+        align-self: flex-start;
+    }
+
+    @include modifier(valign-bottom) {
+        align-self: flex-end;
+    }
+
+    @include modifier(valign-center) {
+        align-self: center;
+    }
+
+    @include modifier(valign-baseline) {
+        align-self: baseline;
+    }
+
+    @include modifier(valign-stratch) {
+        align-self: baseline;
+    }
+
+    // width
+
+    @include width-mixin(1rem);
+}
+}

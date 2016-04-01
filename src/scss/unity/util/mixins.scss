@@ -1,0 +1,113 @@
+@import '../config/variables';
+@import '../util/functions';
+
+//@mixin parent($names...) {
+//    /**
+//     *
+//     */
+//    @at-root #{parent-selector($names)} {
+//        @content;
+//    }
+//}
+//
+//@mixin child($path, $names...) {
+//    /**
+//     *
+//     */
+//    @at-root #{child-selector(&, $path, $names)} {
+//        @content;
+//    }
+//}
+
+//@mixin child-dest-mixin($destination, $names...) {
+//    /**
+//     *
+//     */
+//    @at-root #{$destination} #{child-function(&, $names)} {
+//        @content;
+//    }
+//}
+
+@mixin responsive($names...) {
+    /**
+     *
+     */
+    @at-root #{modifier-selector(&, $names)} {
+        @content;
+    }
+
+    @each $size, $mq in $breakpoints {
+        @media #{$mq} {
+            @at-root #{modifier-selector(&, $names, $size)} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin flex-basis($val) {
+
+    @include modifier-selector(width-1\/12) {
+        flex-basis: calc(8.33% - #{$val});
+    }
+
+    @include modifier-selector(width-2\/12, width-1\/6) {
+        flex-basis: calc(16.66% - #{$val});
+    }
+
+    @include modifier-selector(width-3\/12, width-1\/4) {
+        flex-basis: calc(25% - #{$val});
+    }
+
+    @include modifier-selector(width-1\/5) {
+        flex-basis: calc(20% - #{$val});
+    }
+
+    @include modifier-selector(width-4\/12, width-1\/3) {
+        flex-basis: calc(33.33% - #{$val});
+    }
+
+    @include modifier-selector(width-2\/5) {
+        flex-basis: calc(40% - #{$val});
+    }
+
+    @include modifier-selector(width-5\/12) {
+        flex-basis: calc(41.66% - #{$val});
+    }
+
+    @include modifier-selector(width-6\/12, width-1\/2) {
+        flex-basis: calc(50% - #{$val});
+    }
+
+    @include modifier-selector(width-7\/12) {
+        flex-basis: calc(58.33% - #{$val});
+    }
+
+    @include modifier-selector(width-3\/5) {
+        flex-basis: calc(60% - #{$val});
+    }
+
+    @include modifier-selector(width-8\/12, width-2\/3) {
+        flex-basis: calc(66.66% - #{$val});
+    }
+
+    @include modifier-selector(width-9\/12, width-3\/4) {
+        flex-basis: calc(75% - #{$val});
+    }
+
+    @include modifier-selector(width-4\/5) {
+        flex-basis: calc(80% - #{$val});
+    }
+
+    @include modifier-selector(width-10\/12, width-5\/6) {
+        flex-basis: calc(83.33% - #{$val});
+    }
+
+    @include modifier-selector(width-11\/12) {
+        flex-basis: calc(91.66% - #{$val});
+    }
+
+    @include modifier-selector(width-12\/12, width-1\/1) {
+        flex-basis: calc(100% - #{$val});
+    }
+}

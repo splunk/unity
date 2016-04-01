@@ -1,10 +1,10 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    rename = require('gulp-rename'),
-    uglify = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    postcssGulp = require('gulp-postcss');
-
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var postcss = require('postcss');
+var postcssGulp = require('gulp-postcss');
 var filename = 'unity-2.0.0.min';
 
 //function jsTask() {
@@ -16,34 +16,39 @@ var filename = 'unity-2.0.0.min';
 //        .pipe(gulp.dest('./' + dest + '/script'));
 //}
 
+
+
+
 function watchTask() {
     //gulp.watch('./src/js/unity.js', ['js']);
     cssTask();
-    gulp.watch('./src/scss/**/*.scss', ['css']);
+    gulp.watch('./src/css/**/*.css', ['css']);
 }
 
 function cssTask() {
 
-    //gulp.src('./src/scss/test.scss')
-    gulp.src('./src/scss/bootstrap.scss')
+    gulp.src('./src/css/bootstrap.css')
+    // gulp.src('./src/scss/bootstrap.scss')
+    //
+    // .pipe(sass({
+    //     outputStyle: 'expanded'
+    // }).on('error', sass.logError))
 
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('error', sass.logError))
+    .pipe(postcssGulp([
+        require('postcss-import')(),
+        require('./src/js/postcss-mpc')()
+        // require('css-mqpacker')()
+        // require('postcss-cssnext')()
+    ]))
 
-        .pipe(postcssGulp([
-            require('css-mqpacker')(),
-            require('autoprefixer')()
-        ]))
+    //.pipe(require('gulp-cssnano')())
 
-        //.pipe(require('gulp-cssnano')())
+    .pipe(rename(function(path) {
+        path.basename = filename;
+        path.ext = 'css';
+    }))
 
-        .pipe(rename(function(path) {
-            path.basename = filename;
-            path.ext = 'css';
-        }))
-
-        .pipe(gulp.dest('./bin/css'));
+    .pipe(gulp.dest('./bin/css'));
 }
 
 //gulp.task('js', jsTask);

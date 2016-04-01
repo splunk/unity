@@ -4,8 +4,13 @@ $config-path-svg: '../svg/';
 
 // breakpoints
 
-$breakpoint-keys: (xs,    sm,    md,    lg,    xl);
-$breakpoint-vals: (34rem, 48rem, 64rem, 80rem);
+$breakpoints: (
+    xs: 'screen and (max-width: 34rem)',
+    sm: 'screen and (min-width: 34rem)',
+    md: 'screen and (min-width: 48rem)',
+    lg: 'screen and (min-width: 64rem)',
+    xl: 'screen and (min-width: 80rem)'
+);
 
 // container
 

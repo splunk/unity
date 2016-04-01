@@ -1,0 +1,453 @@
+:root {
+    --gutter-1: 1rem;
+    --gutter-2: 2rem;
+}
+
+/* selectors */
+
+@custom-selector :--container   .container;
+@custom-selector :--hide        .container\:hide;
+@custom-selector :--nowrap      .container\:nowrap;
+@custom-selector :--item        .container\.item;
+@custom-selector :--width-7-12  .container\.item\:width-7\/12;
+
+/* CONTAINER */
+
+/* debug */
+
+.debug :--container {
+    border: 1px solid red;
+}
+.debug .container\.item {
+    border: 1px solid blue;
+}
+
+/* defaults */
+
+:--container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+}
+
+/* display */
+
+:--hide,
+:media(--xs) :--hide\@xs,
+:media(--sm) :--hide\@sm,
+:media(--md) :--hide\@md,
+:media(--lg) :--hide\@lg,
+:media(--xl) :--hide\@xl {
+    display: none;
+}
+
+/* flex-wrap */
+
+:--nowrap,
+:media(--xs) :--nowrap\@xs,
+:media(--sm) :--nowrap\@sm,
+:media(--md) :--nowrap\@md,
+:media(--lg) :--nowrap\@lg,
+:media(--xl) :--nowrap\@xl {
+    flex-wrap: nowrap;
+}
+
+/* max-width */
+
+.container\:width-cap {
+    max-width: 80rem;
+}
+
+/* background-color */
+
+.container\:black {
+    background-color: #000000;
+}
+
+.container\:gray {
+    background-color: #8d8d8d;
+}
+
+/* justify-content */
+
+.container\:halign-items-left {
+    justify-content: flex-start;
+}
+
+.container\:halign-items-right {
+    justify-content: flex-end;
+}
+
+.container\:halign-items-center {
+    justify-content: center;
+}
+
+.container\:halign-items-full {
+    justify-content: space-between;
+}
+
+.container\:halign-items-even {
+    justify-content: space-around;
+}
+
+/* align-items */
+
+.container\:valign-items-top {
+    align-items: flex-start;
+}
+
+.container\:valign-items-bottom {
+    align-items: flex-end;
+}
+
+.container\:valign-items-center {
+    align-items: center;
+}
+
+.container\:valign-items-baseline {
+    align-items: baseline;
+}
+
+.container\:valign-items-stretch {
+    align-items: stretch;
+}
+
+/* align-content */
+
+.container\:valign-rows-top {
+    align-content: flex-start;
+}
+
+.container\:valign-rows-bottom {
+    align-content: flex-end;
+}
+
+.container\:valign-rows-center {
+    align-content: center;
+}
+
+.container\:valign-rows-full {
+    align-content: space-around;
+}
+
+.container\:valign-rows-even {
+    align-content: space-between;
+}
+
+.container\:valign-rows-stretch {
+    align-content: stretch;
+}
+
+/* ITEM */
+
+/* defaults */
+
+.container\.item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+
+/* display */
+
+.container\.item\:hide {
+    display: none;
+}
+
+/* flex grow */
+
+.container\.item\:grow {
+    flex-grow: 1;
+}
+
+/* flex shrink */
+
+.container\.item\:shrink {
+    flex-shrink: 1;
+}
+
+/* align-self */
+
+.container\.item\:valign-top {
+    align-self: flex-start;
+}
+
+.container\.item\:valign-bottom {
+    align-self: flex-end;
+}
+
+.container\.item\:valign-center {
+    align-self: center;
+}
+
+.container\.item\:valign-baseline {
+    align-self: baseline;
+}
+
+.container\.item\:valign-stratch {
+    align-self: stretch;
+}
+
+/* margin */
+
+.container\.item\:gutter-1 {
+    margin: var(--gutter-1);
+}
+
+.container\.item\:gutter-2 {
+    margin: var(--gutter-2);
+}
+
+/* flex-basis */
+
+/* 1/12 */
+
+.container\.item\:width-1\/12 {
+    flex-basis: 8.33%;
+}
+
+.container\.item\:width-1\/12.container\.item\:gutter-1 {
+    flex-basis: calc(8.33% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/12.container\.item\:gutter-2 {
+    flex-basis: calc(8.33% - var(--gutter-2));
+}
+
+/* 2/12 */
+
+.container\.item\:width-1\/6,
+.container\.item\:width-2\/12 {
+    flex-basis: 16.66%;
+}
+
+.container\.item\:width-1\/6.container\.item\:gutter-1,
+.container\.item\:width-2\/12.container\.item\:gutter-1 {
+    flex-basis: calc(16.66% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/6.container\.item\:gutter-2,
+.container\.item\:width-2\/12.container\.item\:gutter-2 {
+    flex-basis: calc(16.66% - var(--gutter-2));
+}
+
+/* 1/5 */
+
+.container\.item\:width-1\/5 {
+    flex-basis: 20%;
+}
+
+.container\.item\:width-1\/5.container\.item\:gutter-1 {
+    flex-basis: calc(20% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/5.container\.item\:gutter-2 {
+    flex-basis: calc(20% - var(--gutter-2));
+}
+
+/* 3/12 */
+
+.container\.item\:width-1\/4,
+.container\.item\:width-3\/12 {
+    flex-basis: 25%;
+}
+
+.container\.item\:width-1\/4.container\.item\:gutter-1,
+.container\.item\:width-3\/12.container\.item\:gutter-1 {
+    flex-basis: calc(25% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/4.container\.item\:gutter-2,
+.container\.item\:width-3\/12.container\.item\:gutter-2 {
+    flex-basis: calc(25% - var(--gutter-2));
+}
+
+/* 4/12 */
+
+.container\.item\:width-1\/3,
+.container\.item\:width-4\/12 {
+    flex-basis: 33.33%;
+}
+
+.container\.item\:width-1\/3.container\.item\:gutter-1,
+.container\.item\:width-4\/12.container\.item\:gutter-1 {
+    flex-basis: calc(33.33% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/3.container\.item\:gutter-2,
+.container\.item\:width-4\/12.container\.item\:gutter-2 {
+    flex-basis: calc(33.33% - var(--gutter-2));
+}
+
+/* 2/5 */
+
+.container\.item\:width-2\/5 {
+    flex-basis: 40%;
+}
+
+.container\.item\:width-2\/5.container\.item\:gutter-1 {
+    flex-basis: calc(40% - var(--gutter-1));
+}
+
+.container\.item\:width-2\/5.container\.item\:gutter-2 {
+    flex-basis: calc(40% - var(--gutter-2));
+}
+
+/* 5/12 */
+
+.container\.item\:width-5\/12 {
+    flex-basis: 41.66%;
+}
+
+.container\.item\:width-5\/12.container\.item\:gutter-1 {
+    flex-basis: calc(41.66% - var(--gutter-1));
+}
+
+.container\.item\:width-5\/12.container\.item\:gutter-2 {
+    flex-basis: calc(41.66% - var(--gutter-2));
+}
+
+/* 6/12 */
+
+.container\.item\:width-1\/2,
+.container\.item\:width-6\/12 {
+    flex-basis: 50%;
+}
+
+.container\.item\:width-1\/2.container\.item\:gutter-1,
+.container\.item\:width-6\/12.container\.item\:gutter-1 {
+    flex-basis: calc(50% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/2.container\.item\:gutter-2,
+.container\.item\:width-6\/12.container\.item\:gutter-2 {
+    flex-basis: calc(50% - var(--gutter-2));
+}
+
+/* 7/12 */
+
+.container\.item\:width-7\/12 {
+    flex-basis: 58.33%;
+}
+
+.container\.item\:width-7\/12.container\.item\:gutter-1 {
+    flex-basis: calc(58.33% - var(--gutter-1));
+}
+
+.container\.item\:width-7\/12.container\.item\:gutter-2 {
+    flex-basis: calc(58.33% - var(--gutter-2));
+}
+
+/* 3/5 */
+
+
+.container\.item\:width-3\/5 {
+    flex-basis: 60%;
+}
+
+.container\.item\:width-3\/5.container\.item\:gutter-1 {
+    flex-basis: calc(60% - var(--gutter-1));
+}
+
+.container\.item\:width-3\/5.container\.item\:gutter-2 {
+    flex-basis: calc(60% - var(--gutter-2));
+}
+
+/* 8/12 */
+
+.container\.item\:width-2\/3,
+.container\.item\:width-8\/12 {
+    flex-basis: 66.66%;
+}
+
+.container\.item\:width-2\/3.container\.item\:gutter-1,
+.container\.item\:width-8\/12.container\.item\:gutter-1 {
+    flex-basis: calc(66.66% - var(--gutter-1));
+}
+
+.container\.item\:width-2\/3.container\.item\:gutter-2,
+.container\.item\:width-8\/12.container\.item\:gutter-2 {
+    flex-basis: calc(66.66% - var(--gutter-2));
+}
+
+/* 9/12 */
+
+.container\.item\:width-3\/4,
+.container\.item\:width-9\/12 {
+    flex-basis: 75%;
+}
+
+.container\.item\:width-3\/4.container\.item\:gutter-1,
+.container\.item\:width-9\/12.container\.item\:gutter-1 {
+    flex-basis: calc(75% - var(--gutter-1));
+}
+
+.container\.item\:width-3\/4.container\.item\:gutter-2,
+.container\.item\:width-9\/12.container\.item\:gutter-2 {
+    flex-basis: calc(75% - var(--gutter-2));
+}
+
+/* 4/5 */
+
+.container\.item\:width-4\/5 {
+    flex-basis: 80%;
+}
+
+.container\.item\:width-4\/5.container\.item\:gutter-1 {
+    flex-basis: calc(80% - var(--gutter-1));
+}
+
+.container\.item\:width-4\/5.container\.item\:gutter-2 {
+    flex-basis: calc(80% - var(--gutter-2));
+}
+
+/* 10/12 */
+
+.container\.item\:width-5\/6,
+.container\.item\:width-10\/12 {
+    flex-basis: 83.33%;
+}
+
+.container\.item\:width-5\/6.container\.item\:gutter-1,
+.container\.item\:width-10\/12.container\.item\:gutter-1 {
+    flex-basis: calc(83.33% - var(--gutter-1));
+}
+
+.container\.item\:width-5\/6.container\.item\:gutter-2,
+.container\.item\:width-10\/12.container\.item\:gutter-2 {
+    flex-basis: calc(83.33% - var(--gutter-2));
+}
+
+/* 11/12 */
+
+.container\.item\:width-11\/12 {
+    flex-basis: 91.66%;
+}
+
+.container\.item\:width-11\/12.container\.item\:gutter-1 {
+    flex-basis: calc(91.66% - var(--gutter-1));
+}
+
+.container\.item\:width-11\/12.container\.item\:gutter-2 {
+    flex-basis: calc(91.66% - var(--gutter-2));
+}
+
+/* 12/12 */
+
+.container\.item\:width-1\/1,
+.container\.item\:width-12\/12 {
+    flex-basis: 100%;
+}
+
+.container\.item\:width-1\/1.container\.item\:gutter-1,
+.container\.item\:width-12\/12.container\.item\:gutter-1 {
+    flex-basis: calc(100% - var(--gutter-1));
+}
+
+.container\.item\:width-1\/1.container\.item\:gutter-2,
+.container\.item\:width-12\/12.container\.item\:gutter-2 {
+    flex-basis: calc(100% - var(--gutter-2));
+}

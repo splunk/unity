@@ -1,0 +1,23 @@
+.foo1,
+:media(--xs) .foo\@xs,
+:media(--sm) .foo\@sm,
+:media(--md) .foo\@md,
+:media(--lg) .foo\@lg,
+:media(--xl) .foo\@xl {
+    height: 100px;
+    width: 100px;
+}
+
+.bar,
+:media(--xs) .bar\@xs,
+:media(--sm) .bar\@sm,
+:media(--md) .bar\@md,
+:media(--lg) .bar\@lg,
+:media(--xl) .bar\@xl {
+    height: 200px;
+    width: 200px;
+}
+
+.hide {
+    display: none;
+}

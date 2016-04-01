@@ -1,20 +1,47 @@
-$breakpoint-keys: (sm, md, lg);
-$breakpoint-vals: (1rem, 2rem);
+@import "unity/util/mixins";
+@import "unity/util/functions";
+@import "unity/config/variables";
 
-@import 'utils/mixins';
-@import 'utils/functions';
+$container: '.container';
+$container-item: '.container\\.item';
 
-@include attribute(container) {
+.container {
     display: block;
-    @include modifier(hide) {
-        display: none;
-    }
 }
 
-@include attribute(container__item) {
-    display: block;
-    @include modifier(inline) {
-        display: inline;
-    }
+@mixin resp($mixin, $selector) {
+    display: none;
 }
 
+@mixin hidden {
+    display: none;
+}
+
+.container\:hide {
+    @include hidden;
+}
+
+
+
+//@each $size, $mq in $breakpoints {
+//
+//    @media ()
+//    .container\:gutter-1\@#{size} {
+//        padding: 1px;
+//
+//        & > .container\.item\:width-100 {
+//            width: 100%;
+//        }
+//    }
+//}
+
+
+//@include responsive()
+
+//.container\.item {
+//    display: inline;
+//}
+//
+//.container\.item\:hide {
+//    display: none;
+//}

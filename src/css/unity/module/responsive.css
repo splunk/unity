@@ -1,0 +1,11 @@
+@custom-media --xs (width <= 34rem);
+@custom-media --sm (width >= 34rem);
+@custom-media --md (width >= 48rem);
+@custom-media --lg (width >= 64rem);
+@custom-media --xl (width >= 80rem);
+
+@media (--xs) {}
+@media (--sm) {}
+@media (--md) {}
+@media (--lg) {}
+@media (--xl) {}
