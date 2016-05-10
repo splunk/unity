@@ -1,0 +1,182 @@
+// u.root
+
+.u\.root {
+    width: 100%;
+    overflow: hidden;
+}
+
+// u.container
+
+[class*='u.container'] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: calc(100% + #{$grid--gutter--default});
+    margin-left: -#{$grid--gutter--default / 2};
+    margin-right: -#{$grid--gutter--default / 2};
+    margin-bottom: -#{$grid--gutter--default};
+}
+
+.u\.container {
+
+    // nowrap
+
+    &\:nowrap {
+        flex-wrap: nowrap;
+    }
+
+    // horizontal align
+
+    @include responsive('&\\:right') {
+        justify-content: flex-end;
+    }
+
+    @include responsive('&\\:center') {
+        justify-content: center;
+    }
+
+    @include responsive('&\\:repel') {
+        justify-content: space-between;
+    }
+
+    // vertical align
+
+    &\:top {
+        align-items: flex-start;
+    }
+
+    &\:bottom {
+        align-items: flex-end;
+    }
+
+    &\:baseline {
+        align-items: baseline;
+    }
+
+    &\:tall {
+        align-items: stretch;
+    }
+
+    // padding
+    @each $padding-key, $padding-val in $grid--padding {
+        &\:pad-#{$padding-key} {
+            padding: $padding-val;
+        }
+
+        &\:hpad-#{$padding-key} {
+            padding-left: $padding-val;
+            padding-right: $padding-val;
+        }
+
+        &\:vpad-#{$padding-key} {
+            padding-top: $padding-val;
+            padding-bottom: $padding-val;
+        }
+    }
+
+
+    // vertical gutter
+
+    @each $gutter-key, $gutter-val in $grid--gutter--options {
+        &\:vspace-#{$gutter-key} {
+            margin-bottom: -#{$gutter-val};
+
+            & > [class*='u.item'] {
+                margin-bottom: $gutter-val;
+            }
+        }
+    }
+
+    // horizontal gutter
+
+    @each $gutter-key, $gutter-val in $grid--gutter--options {
+        &\:hspace-#{$gutter-key} {
+            width: calc(100% + #{$gutter-val});
+            margin-left: -#{$gutter-val / 2};
+            margin-right: -#{$gutter-val / 2};
+            & > [class*='u.item'] {
+                margin-left: #{$gutter-val / 2};
+                margin-right: #{$gutter-val / 2};
+            }
+        }
+    }
+}
+
+// u.col
+
+[class*='u.item'] {
+    display: block;
+    flex-shrink: 1;
+    margin-left: #{$grid--gutter--default / 2};
+    margin-right: #{$grid--gutter--default / 2};
+    margin-bottom: $grid--gutter--default;
+
+    // debug
+
+    .debug & {
+        border: 1px solid #0f0;
+    }
+}
+
+.u\.item {
+
+    // flex-shrink
+
+    &\:shrink {
+        flex-shrink: 99;
+    }
+
+    // vertical align
+
+    @include responsive('&\\:top') {
+        align-self: flex-start;
+    }
+
+    @include responsive('&\\:top') {
+        align-self: flex-end;
+    }
+
+    @include responsive('&\\:baseline') {
+        align-self: baseline;
+    }
+
+    @include responsive('&\\:tall') {
+        align-self: stretch;
+    }
+
+    // max width
+
+    &\:cap {
+        max-width: $grid--max-width;
+    }
+
+    // order
+
+    @include responsive('&\\:first') {
+        order: -1;
+    }
+
+    @include responsive('&\\:last') {
+        order: 1;
+    }
+
+    // width
+    // don't use responsive because of specifiity issues
+
+    @each $breakpoint-key, $breakpoint-val in $breakpoints {
+        @media #{$breakpoint-val} {
+            @each $width-key, $width-val in $grid--widths {
+                &\:#{$width-key}\@#{$breakpoint-key} {
+                    width: calc(#{$width-val} - #{$grid--gutter--default});
+                    flex-shrink: 0;
+                    @each $gutter-key, $gutter-val in $grid--gutter--options {
+                        .u\.container\:hspace-#{$gutter-key} > & {
+                            width: calc(#{$width-val} - #{$gutter-val});
+                            flex-shrink: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+// u.txt
+
+.u\.txt {
+
+    // font-size
+
+    //&\:sm {
+    //    font-size: $font-size--sm;
+    //}
+    //
+    //&\:xl {
+    //    font-size: $font-size--sm;
+    //}
+
+    &\:center {
+        text-align: center;
+    }
+
+    // headers
+
+    @include responsive('&\\:h1') {
+        font: $heading--font-weight $heading--font-size--h1#{'/'}$heading--line-height $heading--font-family;
+    }
+
+    @include responsive('&\\:h2') {
+        font: $heading--font-weight $heading--font-size--h2#{'/'}$heading--line-height $heading--font-family;
+    }
+
+    @include responsive('&\\:h3') {
+        font: $heading--font-weight $heading--font-size--h3#{'/'}$heading--line-height $heading--font-family;
+    }
+
+    @include responsive('&\\:h4') {
+        font: $heading--font-weight $heading--font-size--h4#{'/'}$heading--line-height $heading--font-family;
+    }
+
+    @include responsive('&\\:h5') {
+        font: $heading--font-weight $heading--font-size--h5#{'/'}$heading--line-height $heading--font-family;
+    }
+
+    @include responsive('&\\:h6') {
+        font: $heading--font-weight $heading--font-size--h6#{'/'}$heading--line-height $heading--font-family;
+    }
+}

@@ -1,0 +1,39 @@
+[class*="sb.clamp"] {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        text-align: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 60%;
+        background: linear-gradient(to right, transparent, #fff);
+        height: calc(1em * #{$text--line-height});
+    }
+}
+
+.sb\.clamp\:2x {
+    height: calc(#{$text--font-size--default} * #{$text--line-height} * 2);
+}
+
+.sb\.clamp\:3x {
+    height: calc(#{$text--font-size--default} * #{$text--line-height} * 3);
+}
+
+// headings
+
+.sb\.clamp\:heading-2x {
+     height: calc(1em * #{$heading--line-height} * 2);
+}
+
+[class*="sb.clamp:heading"]::after {
+    height: calc(1em * #{$heading--line-height});
+}
+
+//// colors
+//
+//.sb\.clamp\:gray-dark::after {
+//    background: linear-gradient(to right, transparent, #{$color--gray-dark});
+//}

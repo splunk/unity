@@ -1,11 +1,14 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var postcss = require('postcss');
-var postcssGulp = require('gulp-postcss');
-var filename = 'unity-2.0.0.min';
+'use strict';
+
+const gulp = require('gulp');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const postcssGulp = require('gulp-postcss');
+const sass = require('gulp-sass');
+const cssnano = require('gulp-cssnano');
+
+const filename = 'unity-2.0.0.min';
 
 //function jsTask() {
 //    gulp.src('./src/js/unity.js')
@@ -16,39 +19,31 @@ var filename = 'unity-2.0.0.min';
 //        .pipe(gulp.dest('./' + dest + '/script'));
 //}
 
-
-
-
 function watchTask() {
-    //gulp.watch('./src/js/unity.js', ['js']);
-    cssTask();
-    gulp.watch('./src/css/**/*.css', ['css']);
+    gulp.start('css');
+    gulp.watch('./src/**/*.scss', ['css']);
 }
 
 function cssTask() {
 
-    gulp.src('./src/css/bootstrap.css')
-    // gulp.src('./src/scss/bootstrap.scss')
-    //
-    // .pipe(sass({
-    //     outputStyle: 'expanded'
-    // }).on('error', sass.logError))
+    gulp.src('./src/splunkbase/sass/bootstrap.scss')
 
-    .pipe(postcssGulp([
-        require('postcss-import')(),
-        require('./src/js/postcss-mpc')()
-        // require('css-mqpacker')()
-        // require('postcss-cssnext')()
-    ]))
+        .pipe(sass().on('error', sass.logError))
 
-    //.pipe(require('gulp-cssnano')())
+        .pipe(postcssGulp([
+            require('autoprefixer')()
+            // postcssMpc(),
+            // postcssMqPacker()
+        ]))
 
-    .pipe(rename(function(path) {
-        path.basename = filename;
-        path.ext = 'css';
-    }))
+        // .pipe(cssnano())
 
-    .pipe(gulp.dest('./bin/css'));
+        .pipe(rename(function(path) {
+            path.basename = 'splunkbase';
+            path.ext = 'css';
+        }))
+
+        .pipe(gulp.dest('./bin/css'));
 }
 
 //gulp.task('js', jsTask);

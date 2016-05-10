@@ -1,0 +1,110 @@
+:root {
+    --max-width:                1200px;
+
+    --padding--sm:              8px;
+    --padding--md:              16px;
+    --padding--lg:              24px;
+    --padding--xl:              60px;
+
+    --margin--sm:               8px;
+    --margin--md:               16px;
+    --margin--lg:               24px;
+    --margin--xl:               60px;
+
+    --color--default:           #2d2d2d;
+    --color--black:             #000000;
+    --color--white:             #ffffff;
+    --color--gray:              #656565;
+    --color--gray-light:        #d8d8d8;
+    --color--gray-dark:         #464646;
+    --color--gray-darker:       #373839;
+    --color--gray-blue:         #2d3239;
+    --color--gray-blue-light:   #626f7b;
+    --color--gray-blue-dark:    #555e66;
+    --color--green:             #43d220;
+    --color--green-dark:        #2eb50b;
+    --color--green-light:       #b5edaa;
+    --color--blue:              #03a2d6;
+    --color--blue-dark:         #027fbb;
+    --color--blue-light:        #a2daf0;
+    --color--blue-darker:       #2b3338;
+
+    --line-height--default:     1.5;
+    --line-height--heading:     1.2;
+
+    --font-size--default:       14px;
+    --font-size--sm:            12px;
+    --font-size--lg:            16px;
+    --font-size--heading-1:     64px;
+    --font-size--heading-2:     48px;
+    --font-size--heading-3:     36px;
+    --font-size--heading-4:     24px;
+    --font-size--heading-5:     18px;
+    --font-size--heading-6:     16px;
+
+    --font-family--default:     ProximaNovaRegular, Arial, sans-serif;
+    --font-family--heading:     ProximaNovaExtrabold, Arial, sans-serif;
+
+    --icon--height--sm:         12px;
+    --icon--height--md:         22px;
+    --icon--height--lg:         32px;
+}
+
+@custom-media --sm      (max-width: 768px);
+@custom-media --md      (min-width: 768px) and (min-width: 1200px);
+@custom-media --md-up   (min-width: 768px);
+@custom-media --md-down (max-width: 1200px);
+@custom-media --lg      (min-width: 1200px);
+
+
+/*
+--container--widths:                 ('1\\/12':  8.33%,
+                                     '2\\/12':  16.66%,
+                                     '1\\/5':   20%,
+                                     '3\\/12':  25%,
+                                     '4\\/12':  33.33%,
+                                     '2\\/5':   40%,
+                                     '5\\/12':  41.66%,
+                                     '6\\/12':  50%,
+                                     '7\\/12':  58.33%,
+                                     '3\\/5':   60%,
+                                     '8\\/12':  66%,
+                                     '9\\/12':  75%,
+                                     '4\\/5':   80%,
+                                     '10\\/12': 83.33%,
+                                     '11\\/12': 91.66%,
+                                     '12\\/12': 100%)
+
+
+
+//// divider
+//
+//--divider-border-color: #eeeeee
+//--divider-border-color-dark: #d6d6d6
+//
+//--input-bg-color: #fff
+//--input-font-color: #c5c6c8
+//--input-font-color-hover: #939498
+//--input-font-color-selected: #03a2d6
+//--input-font-color-disabled: #939498
+////
+//--btn-font-color-white: #474444
+//--btn-font-color-white-hover: #474444
+//--btn-font-color-white-disabled: #b4b2b2
+//--btn-bg-color-white: #f9f9f9
+//--btn-bg-color-white-hover: #f9f9f9
+//--btn-bg-color-white-disabled: #fcfcfc
+//--btn-border-color-white: #c5c6c8
+//--btn-border-color-white-hover: #939498
+//--btn-border-color-white-disabled: #e8e8e8
+//
+//--btn-font-color-red: #fff
+//--btn-font-color-red-hover: #fff
+//--btn-font-color-red-disabled: #fff
+//--btn-bg-color-red: #d93d33
+//--btn-bg-color-red-hover: #a4231a
+//--btn-bg-color-red-disabled: #f0b2af
+//--btn-border-color-red: #a4231a
+//--btn-border-color-red-hover: #a4231a
+//--btn-border-color-red-disabled: #dba7a5
+*/

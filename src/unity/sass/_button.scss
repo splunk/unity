@@ -1,0 +1,44 @@
+[class*='u.btn'] {
+    display: inline-block;
+    cursor: pointer;
+    color: map-get(map-get($button--color--default, dormant), text);
+    border: 2px solid map-get(map-get($button--color--default, dormant), border);
+    background-color: map-get(map-get($button--color--default, dormant), background);
+    font-size: map-get($button--size--default, font-size);
+    line-height: map-get($button--size--default, line-height);
+    font-family: $button--font-family;
+    outline: none;
+    padding: 0 1rem;
+    border-radius: .125rem;
+    text-align: center;
+    transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+[class*='u.btn']:hover {
+    border: 2px solid map-get(map-get($button--color--default, hover), border);
+    background-color: map-get(map-get($button--color--default, hover), background);
+    color: map-get(map-get($button--color--default, hover), text);
+}
+
+
+.u\.btn {
+
+    @include responsive('&\\:wide') {
+        width: 100%;
+    }
+
+    @each $color-key, $color-map in $button--colors--options {
+        &\:#{$color-key} {
+            color: map-get(map-get($color-map, dormant), text);
+            border: 2px solid map-get(map-get($color-map, dormant), border);
+            background-color: map-get(map-get($color-map, dormant), background);
+
+            &:hover {
+                color: map-get(map-get($color-map, hover), text);
+                border: 2px solid map-get(map-get($color-map, hover), border);
+                background-color: map-get(map-get($color-map, hover), background);
+            }
+        }
+    }
+
+}

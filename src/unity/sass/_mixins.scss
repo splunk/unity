@@ -1,0 +1,30 @@
+@mixin create-reos($name) {
+    // Create a responsive extend only selector.
+    // By default @extend doesn't work with @media, so we fix that.
+    %reos--#{$name}-- {
+        @content;
+    }
+    @each $key, $val in $breakpoints {
+        @media #{$val} {
+            %reos--#{$name}--#{$key} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin extend-reos($name, $size: null) {
+    // Extend a responsive extend only selector
+    @extend %reos--#{$name}--#{$size};
+}
+
+
+@mixin responsive($selector) {
+    @each $breakpoint-key, $breakpoint-val in $breakpoints {
+        @media #{$breakpoint-val} {
+            #{$selector}\@#{$breakpoint-key} {
+                @content;
+            }
+        }
+    }
+}

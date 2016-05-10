@@ -1,0 +1,21 @@
+/*
+ *  thumb
+ */
+.logo {
+    height: 32px;
+    width: 160px;
+}
+
+.thumb\:thin {
+    border: 4px solid white;
+    border-radius: 2px;
+    height: 36px;
+    width: 36px;
+}
+
+.thumb\:think {
+    border: 6px solid white;
+    border-radius: 2px;
+    height: 56px;
+    width: 56px;
+}

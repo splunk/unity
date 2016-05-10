@@ -1,0 +1,193 @@
+/*
+ * hide
+ */
+
+@media (--sm) {
+    .u\.hide\@sm {
+        display: none;
+    }
+}
+
+@media (--md) {
+    .u\.hide\@md {
+        display: none;
+    }
+}
+
+@media (--md-up) {
+    .u\.hide\@md-up {
+        display: none;
+    }
+}
+
+@media (--md-down) {
+    .u\.hide\@md-down {
+        display: none;
+    }
+}
+
+@media (--lg) {
+    .u\.hide\@lg {
+        display: none;
+    }
+}
+
+/*
+ * mt (margin-top)
+ */
+
+.u\.mt\:sm {
+    margin-top: var(--margin--sm);
+}
+
+.u\.mt\:md {
+    margin-top: var(--margin--md);
+}
+
+.u\.mt\:lg {
+    margin-top: var(--margin--lg);
+}
+
+/*
+ * mr (margin-right)
+ */
+
+.u\.mr\:sm {
+    margin-right: var(--margin--sm);
+}
+
+.u\.mr\:md {
+    margin-right: var(--margin--md);
+}
+
+.u\.mr\:lg {
+    margin-right: var(--margin--lg);
+}
+
+/*
+ * mb (margin-bottom)
+ */
+
+.u\.mb\:sm {
+    margin-bottom: var(--margin--sm);
+}
+
+.u\.mb\:md {
+    margin-bottom: var(--margin--md);
+}
+
+.u\.mb\:lg {
+    margin-bottom: var(--margin--lg);
+}
+
+/*
+ * ml (margin-left)
+ */
+
+.u\.ml\:sm {
+    margin-left: var(--margin--sm);
+}
+
+.u\.ml\:md {
+    margin-left: var(--margin--md);
+}
+
+.u\.ml\:lg {
+    margin-left: var(--margin--lg);
+}
+
+/*
+ * p (padding)
+ */
+
+.u\.p\:sm {
+    padding: var(--padding--sm);
+}
+
+.u\.p\:md {
+    padding: var(--padding--md);
+}
+
+.u\.p\:lg {
+    padding: var(--padding--lg);
+}
+
+/*
+ * ptb (padding-top, padding-bottom)
+ */
+
+.u\.ptb\:sm {
+    padding-top: var(--padding--sm);
+    padding-bottom: var(--padding--sm);
+}
+
+.u\.ptb\:md {
+    padding-top: var(--padding--md);
+    padding-bottom: var(--padding--md);
+
+}
+
+.u\.ptb\:lg {
+    padding-top: var(--padding--lg);
+    padding-bottom: var(--padding--lg);
+}
+
+.u\.ptb\:xl {
+    padding-top: var(--padding--xl);
+    padding-bottom: var(--padding--xl);
+}
+
+/* */
+.u\.mb\:8 {
+    margin-bottom: 8px;
+}
+
+.u\.mb\:16 {
+    margin-bottom: 16px;
+}
+
+.u\.mt\:16 {
+    margin-top: 16px;
+}
+
+.u\.mt\:24 {
+    margin-top: 24px;
+}
+
+.u\.mtb\:16 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.u\.mtb\:40 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.u\.p\:8 {
+    padding: 8px;
+}
+
+.u\.p\:16 {
+    padding: 16px;
+}
+
+.u\.plr\:16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.u\.ptb\:16 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.u\.ptb\:32 {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.u\.ptb\:60 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
