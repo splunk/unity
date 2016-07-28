@@ -1,16 +1,13 @@
 {
-    "name": "unity",
-  	"version": "1.0.0",
-  	"private": true,
-    "devDependencies": {
-        "gulp": "latest",
-        "gulp-rename": "latest",
-        "gulp-uglify": "latest",
-        "gulp-cssnano": "latest",
-        "gulp-sourcemaps": "latest",
-        "gulp-postcss": "latest",
-        "postcss-cssnext": "latest",
-        "postcss-import": "latest",
-        "css-mqpacker": "latest"
-    }
+  	"name": "unity",
+  	"version": "2.0.1",
+	"devDependencies": {
+		"gulp": "latest",
+		"gulp-rename": "latest",
+		"gulp-cssnano": "latest",
+		"gulp-sourcemaps": "latest",
+		"gulp-postcss": "latest",
+		"gulp-sass": "latest",
+		"autoprefixer": "latest"
+	}
 }

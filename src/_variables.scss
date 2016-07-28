@@ -1,10 +1,11 @@
 // text
 
-$text--color:               hsl(0, 0%, 33%) !default;
+$text--color:               hsl(0, 0%, 15%) !default;
 $text--font-family:         "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $text--line-height:         1.5 !default;
 $text--font-size--default:  1rem !default;
-$text--font-size--small:    .75rem !default;
+$text--font-size--options:  (sm: .75rem,
+                            lg: 1.5rem) !default;
 
 // headings
 
@@ -18,14 +19,7 @@ $heading--font-size--h4:    2rem !default;
 $heading--font-size--h5:    1.5rem !default;
 $heading--font-size--h6:    1rem !default;
 
-// icons
-$icon--size--default:   1rem !default;
-$icon--size--options:  (sm: .75rem,
-                        lg: 2rem,
-                        xl: 4.5rem) !default;
-
-// breakpoints
-// 768, 992, 1200
+// breakpoints (768, 992, 1200)
 
 $breakpoints:  ('\\*':      'all',
                 'sm':       '(max-width: 48rem)',
@@ -41,7 +35,8 @@ $breakpoints:  ('\\*':      'all',
 
 $grid--max-width:           75rem !default;
 $grid--gutter--default:     1rem !default;
-$grid--gutter--options:    (sm: .5rem,
+$grid--gutter--options:    (xs: .25rem,
+                            sm: .5rem,
                             lg: 2rem) !default;
 $grid--padding:            (md: 1rem,
                             lg: 2rem) !default;
@@ -61,25 +56,3 @@ $grid--widths:             ('1\\/12':  8.333%,
                             '3\\/5':   60%,
                             '4\\/5':   80%,
                             '1\\/1':   100%) !default;
-
-// buttons
-
-
-$button--font-family:       inherit !default;
-$button--color--default:    (
-                                dormant: (
-                                    border:     hsl(0, 0%, 24%),
-                                    background: hsl(0, 0%, 100%),
-                                    text:       hsl(0, 0%, 24%),
-                                ),
-                                hover: (
-                                    border:     hsl(0, 0%, 24%),
-                                    background: hsl(0, 0%, 96%),
-                                    text:       hsl(0, 0%, 24%),
-                                )
-                            ) !default;
-$button--color--options:   () !default;
-
-$button--size--default:  (font-size: 1rem,
-                        line-height: 2) !default;
-

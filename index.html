@@ -1,390 +1,488 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Unity</title>
-    <meta charset='utf-8'>
-    <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-    <link href="bin/css/unity-2.0.0.min.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Unity Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bin/unity.min.css">
     <style>
-        body {
-            margin: 25px;
-            color: #55595c;
+        .scrollbar::-webkit-scrollbar {
+            width: .5rem;
         }
 
-        a {
-            color: hsl(20, 100%, 60%);
-            text-decoration: none;
+        .scrollbar::-webkit-scrollbar-thumb {
+            background-color: hsl(0, 0%, 70%);
         }
 
-        a:hover {
+        .sidenav {
+            width: 16rem;
+        }
+
+        .sidenav\.container {
+            position: fixed;
+            height: 100vh;
+            width: inherit;
+            background-color: hsl(0, 0%, 90%);
+            overflow-y: scroll;
+            box-shadow: 5px 0 10px hsl(0, 0%, 50%);
+        }
+
+        .sidenav\.indent {
+            margin-left: 1rem;
+        }
+
+        .docs\.desc a {
             text-decoration: underline;
         }
 
-        /* TITLE */
-
-        .title {
-            border-bottom: 2px solid hsl(0, 0%, 30%);
-        }
-
-        .title__name {
-            font-family: 'Anonymous Pro', cursive;
-            text-shadow: .03em .03em hsl(40, 100%, 50%);
-            color: hsl(0, 0%, 30%);
-            font-size: 5rem;
-            line-height: 1;
-        }
-
-        .title__desc {
-            font-family: 'Arvo', cursive;
-            text-shadow: .1em .1em hsl(110, 100%, 100%);
-            font-size: 2rem;
-            line-height: 2;
-            font-weight: normal;
-        }
-
-        /* DOCUMENTATION */
-
-        .doc {
-            margin-top: 50px;
-            background-color: hsl(110, 100%, 100%);
-            border-radius: 5px;
-        }
-
-        .doc__name {
-            font-family: 'Arvo', cursive;
-            font-size: 2rem;
-            line-height: 1.5;
-            font-weight: normal;
-        }
-
-        .doc__desc {
-            font-family: 'Anonymous Pro', cursive;
-            font-size: 1.2rem;
-            line-height: 3;
-        }
-
-        .doc__code {
-            background-color: hsl(0, 0%, 97%);
-            border: .1rem solid hsl(0, 0%, 80%);
-            border-left-width: .5rem;
+        .docs\.source,
+        .docs\.demo {
             padding: 1rem;
-            border-radius: .5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-        .doc__demo {
-            margin: 2rem 0;
+            border-radius: .25rem;
+            border: 2px dashed hsl(0, 0%, 60%);
+            background-color: hsl(0, 0%, 90%);
         }
 
-        .doc__demo [container] {
-            border-radius: .5rem;
-            border: .1rem solid hsl(20, 100%, 50%);
-            background-color: hsl(20, 100%, 90%);
-            border-left-width: .5rem;
-            padding: .75rem;
+        .docs\.source {
+            max-width: 100%;
+            font-family: "Lucida Console", Monaco, monospace;
+            overflow-x: scroll;
         }
 
-        .doc__demo [container].height-cap {
-            max-height: 350px;
+        .docs\.demo {
+            overflow: hidden;
         }
 
-        .doc__demo [container] > * {
-            padding: .75rem;
+        .docs\.demo [class*='u.item'] {
+            border-radius: .25rem;
+            background-color: hsl(0, 0%, 60%);
+            color: hsl(0, 0%, 100%);
+            padding: 1rem 1.5rem;
         }
-
-        .doc__demo [container] > * > * {
-            border-radius: .5rem;
-            border: .1rem solid hsl(40, 100%, 50%);
-            background-color: hsl(40, 100%, 90%);
-            border-top-width: .5rem;
-            padding: .5rem 1rem;
-        }
-
-    </style>
+     </style>
 </head>
 <body>
 
-    <div container="items-main-center">
-        <div container.item="width-1/1 width-cap" container="items-tb">
-
-            <div class="title">
-                <h1 class="title__name">Unity 2.0</h1>
-                <h2 class="title__desc">Let's make CSS fun</h2>
+<div class="u.root">
+    <div class="u.container:top@* u.container:nowrap@*">
+        <div class="sidenav u.item:static@* u.hide@sm">
+            <div class="sidenav.container scrollbar u.container:top@* u.container:pad-lg@*"></div>
+        </div>
+        <div class="docs u.item:grow@*">
+            <div class="u.container:center@*">
+                <div class="u.item:cap">
+                    <div class="docs.container u.container:pad-lg@* u.container:vspace-lg"></div>
+                </div>
             </div>
-
-            <div class="content"></div>
+        </div>
     </div>
+</div>
 
-    <script>
-        function clean(str) {
-            var elem = document.createElement('div');
-            elem.textContent = str;
-            return elem.innerHTML;
+<script>
+    const ctx = [
+        {
+            name: 'u.root',
+            desc: 'Element required to clear negative margins for <a href="#u.container">u.container</a>. This is only needed once immediately following the body tag.',
+            html:
+`<body>
+    <div class="u.root">
+        <div class="u.container">
+            <div class="u.item">1</div>
+        </div>
+    </div>
+</body>`,
+            modifiers: []
+        },
+        {
+            name: 'u.container',
+            desc: 'Parent element to <a href="#u.item">u.item</a>\'s. Due to it\'s negative margins directly styling is not recommended, use <a href="#u.item">u.item</a>\'s instead.',
+            html:
+`<div class="u.container">
+    <div class="u.item">1</div>
+</div>`,
+            modifiers: [
+                {
+                    name: 'left',
+                    desc: 'Align child <a href="#u.item">u.item</a>\'s to the left of the container. This is the default behavior.',
+                    html:
+`<div class="u.container:left@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'right',
+                    desc: 'Align child <a href="#u.item">u.item</a>\'s to the right of the container.',
+                    html:
+`<div class="u.container:right@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'center',
+                    desc: 'Centers child <a href="#u.item">u.item</a>\'s within the container.',
+                    html:
+`<div class="u.container:center@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'repel',
+                    desc: 'Repels child <a href="#u.item">u.item</a>\'s away from each other.',
+                    html:
+`<div class="u.container:repel@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'middle',
+                    desc: 'Vertically align child <a href="#u.item">u.item</a>\'s in the middle of the container. This is the default behavior.',
+                    html:
+`<div class="u.container:middle@*">
+    <div class="u.item"
+         style="font-size:3rem">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'top',
+                    desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the top of the container.',
+                    html:
+`<div class="u.container:top@*">
+    <div class="u.item"
+         style="font-size:3rem">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'bottom',
+                    desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the bottom of the container.',
+                    html:
+`<div class="u.container:bottom@*">
+    <div class="u.item"
+         style="font-size:3rem">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'baseline',
+                    desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the text baseline.',
+                    html:
+`<div class="u.container:baseline@*">
+    <div class="u.item"
+         style="font-size:3rem">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'tall',
+                    desc: 'Vertically stretch child <a href="#u.item">u.item</a>\'s to that of the rows height.',
+                    html:
+`<div class="u.container:tall@*">
+    <div class="u.item"
+         style="font-size:3rem">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'pad',
+                    desc: 'Changes the size of the containers padding. Options for this modifier can be found in $grid--padding.',
+                    html:
+`<div class="u.container:pad-lg@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'hpad',
+                    desc: 'Changes the size of the containers horizontal padding. Options for this modifier can be found in $grid--padding.',
+                    html:
+`<div class="u.container:hpad-lg@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'vpad',
+                    desc: 'Changes the size of the containers vertical padding. Options for this modifier can be found in $grid--padding.',
+                    html:
+`<div class="u.container:vpad-lg@*">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'vspace',
+                    desc: 'Changes the vertical spacing between <a href="#u.item">u.item</a>\'s. Options for this modifier can be found in $grid--gutter--options. Note this modifier is not responsive.',
+                    html:
+`<div class="u.container:vspace-lg">
+    <div class="u.item:1/1@*">1</div>
+    <div class="u.item:1/1@*">2</div>
+</div>`
+                },
+                {
+                    name: 'hspace',
+                    desc: 'Changes the horizontal spacing between <a href="#u.item">u.item</a>\'s. Options for this modifier can be found in $grid--gutter--options. Note this modifier is not responsive.',
+                    html:
+`<div class="u.container:hspace-lg">
+    <div class="u.item">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'nowrap',
+                    desc: 'Prevents the container from wrapping child <a href="#u.item">u.item</a>\'s to the next row.',
+                    html:
+`<div class="u.container:nowrap@*">
+    <div class="u.item:1/1@*">1</div>
+    <div class="u.item:1/1@*">2</div>
+</div>`
+                }
+            ]
+        },
+        {
+            name: 'u.item',
+            desc: 'Child element to <a href="#u.container">u.container</a>.',
+            html:
+`<div class="u.container">
+    <div class="u.item">1</div>
+</div>`,
+            modifiers: [
+                {
+                    name: 'shrink',
+                    desc: 'Allows an item to shrink horizontally if other items require more space.',
+                    html:
+`<div class="u.container:nowrap@*">
+    <div class="u.item:shrink@*"
+         style="width:100%">1</div>
+    <div class="u.item"
+         style="width:100%">2</div>
+</div>`
+                },
+                {
+                    name: 'static',
+                    desc: 'Stops an item from shrinking horizontally.',
+                    html:
+`<div class="u.container:nowrap@*">
+    <div class="u.item:static@*"
+         style="width:50%">1</div>
+    <div class="u.item"
+         style="width:100%">2</div>
+</div>`
+                },
+                {
+                    name: 'grow',
+                    desc: 'Allows an item to take up the remaining free space within a row.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:grow@*">1</div>
+    <div class="u.item">2</div>
+</div>`
+                },
+                {
+                    name: 'top',
+                    desc: 'Aligns an item to the top of it\'s row.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:top@*">1</div>
+    <div class="u.item"
+         style="font-size:3rem">2</div>
+    <div class="u.item">3</div>
+</div>`
+                },
+                {
+                    name: 'bottom',
+                    desc: 'Aligns an item to the bottom of it\'s row.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:bottom@*">1</div>
+    <div class="u.item"
+         style="font-size:3rem">2</div>
+    <div class="u.item">3</div>
+</div>`
+                },
+                {
+                    name: 'baseline',
+                    desc: 'Vertically aligns item to the text baseline.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:baseline@*">1</div>
+    <div class="u.item:baseline@*"
+         style="font-size:3rem">2</div>
+    <div class="u.item">3</div>
+</div>`
+                },
+                {
+                    name: 'tall',
+                    desc: 'Vertically stretches an item to that of the row height.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:tall@*">1</div>
+    <div class="u.item"
+         style="font-size:3rem">2</div>
+    <div class="u.item">3</div>
+</div>`
+                },
+                {
+                    name: 'first',
+                    desc: 'Move an item into the first position.',
+                    html:
+`<div class="u.container">
+    <div class="u.item@*">1</div>
+    <div class="u.item:first@*">2</div>
+</div>`
+                },
+                {
+                    name: 'last',
+                    desc: 'Move an item into the last position.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:last@*">1</div>
+    <div class="u.item@*">2</div>
+</div>`
+                },
+                {
+                    name: '{width}',
+                    desc: 'Set the width of an item. Width options can be found at $grid--widths.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:1/12@*">1/12</div>
+    <div class="u.item:11/12@*">11/12</div>
+    <div class="u.item:2/12@*">2/12</div>
+    <div class="u.item:10/12@*">10/12</div>
+    <div class="u.item:3/12@*">3/12</div>
+    <div class="u.item:9/12@*">9/12</div>
+    <div class="u.item:4/12@*">4/12</div>
+    <div class="u.item:8/12@*">8/12</div>
+    <div class="u.item:5/12@*">5/12</div>
+    <div class="u.item:7/12@*">7/12</div>
+    <div class="u.item:6/12@*">6/12</div>
+    <div class="u.item:6/12@*">6/12</div>
+    <div class="u.item:1/5@*">1/5</div>
+    <div class="u.item:4/5@*">4/5</div>
+    <div class="u.item:2/5@*">2/5</div>
+    <div class="u.item:3/5@*">3/5</div>
+    <div class="u.item:1/1@*">1/1</div>
+</div>`
+                }
+            ]
+        },
+        {
+            name: 'u.txt',
+            desc: 'Specifies text that can be modified responsively. By default no additional styling is applied.',
+            html:
+`<div class="u.container">
+    <div class="u.item:1/1@* u.txt">Hello, world!</div>
+</div>`,
+            modifiers: [
+                {
+                    name: 'center',
+                    desc: 'Centers text within an element.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:1/1@* u.txt:center@*">Hello, world!</div>
+</div>`
+                },
+                {
+                    name: '{size}',
+                    desc: 'Adjusts the font size of a text node.',
+                    html:
+`<div class="u.container">
+    <div class="u.item:1/1@* u.txt">Default</div>
+    <div class="u.item:1/1@* u.txt:sm@*">Small</div>
+    <div class="u.item:1/1@* u.txt:lg@*">Large</div>
+    <div class="u.item:1/1@* u.txt:h1@*">Heading 1</div>
+    <div class="u.item:1/1@* u.txt:h2@*">Heading 2</div>
+    <div class="u.item:1/1@* u.txt:h3@*">Heading 3</div>
+    <div class="u.item:1/1@* u.txt:h4@*">Heading 4</div>
+    <div class="u.item:1/1@* u.txt:h5@*">Heading 5</div>
+    <div class="u.item:1/1@* u.txt:h6@*">Heading 6</div>
+</div>`
+                }
+            ]
+        },
+        {
+            name: 'u.hide',
+            desc: 'Responsively hide an element. Breakpoint options can be found in $breakpoints.',
+            html:
+`<div class="u.container">
+    <div class="u.item u.hide@*">all</div>
+    <div class="u.item u.hide@sm">sm</div>
+    <div class="u.item u.hide@md-down">md-down</div>
+    <div class="u.item u.hide@md">md</div>
+    <div class="u.item u.hide@md-up">md-up</div>
+    <div class="u.item u.hide@lg-down">lg-down</div>
+    <div class="u.item u.hide@lg">lg</div>
+    <div class="u.item u.hide@lg-up">lg-up</div>
+    <div class="u.item u.hide@xl">xl</div>
+</div>`,
+            modifiers: []
         }
+    ];
 
-         function createNode(object, parent) {
-             const node = document.createElement('div'),
-                   link = (parent ? parent + '=' : '') + object.name;
-             node.innerHTML = `
-                <div class="doc" id="${link}">
-                    <h3 class="doc__name">${object.name}</h3>
-                    <p class="doc__desc">${object.desc} <a href="#${link}">\u00b6</a></p></p>
-                    <div class="doc__code">${clean(object.code)}</div>
-                    <div class="doc__demo">${object.demo}</div>
-                </div>`;
-            return node;
-        }
-
-        const descriptions = {
-            containerNoWrap: function(mainStart, mainEnd) {
-                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will not wrap.`;
-            },
-            containerWraps: function(mainStart, mainEnd, crossStart, crossEnd) {
-                return `Aligns items within the container from ${mainStart} to ${mainEnd}. Items will wrap from ${crossStart} to ${crossEnd}`;
-            }
-
+    function escape(str) {
+        const replace = {
+            '<': '&lt;',
+            '>': '&gt;'
         };
-
-        const container = document.querySelector('.content');
-        const content = [
-            {
-                name: '@responsive',
-                desc: 'Sets sizing specific rules to elements',
-                code: '<div container@[size]="[modifier]">',
-                demo: `<div container="items-tb">
-                        <div container.item="width-1/2" container.item@xs="width-1/1"><div>Wide @ Extra Small</div></div>
-                        <div container.item="width-1/2" container.item@sm="width-1/1"><div>Wide @ Small</div></div>
-                        <div container.item="width-1/2" container.item@md="width-1/1"><div>Wide @ Medium</div></div>
-                        <div container.item="width-1/2" container.item@lg="width-1/1"><div>Wide @ Large</div></div>
-                        <div container.item="width-1/2" container.item@xl="width-1/1"><div>Wide @ Extra Large</div></div>
-                    </div>`
-            },
-            {
-                name: 'container',
-                desc: 'Main container object',
-                code: '<div container>',
-                demo: `<div container>
-                        <div><div>1</div></div>
-                    </div>`,
-                modifiers: [
-//                    {
-//                        name: 'inline',
-//                        desc: 'blah blah',
-//                        code: '<div container="inline">',
-//                        demo: `
-//                            <div container="inline width-1/2">
-//                                <div>1</div>
-//                            </div><div container="inline width-1/2">
-//                                <div>2</div>
-//                            </div>
-//                        `
-//                    },
-                    {
-                        name: 'hide',
-                        desc: 'Hides container from view',
-                        code: `<div container="hide">`,
-                        demo: ``
-                    },
-                    {
-                        name: 'items-lr',
-                        desc: descriptions.containerNoWrap('left', 'right') + ' This is the default setting.',
-                        code: '<div container="items-lr">',
-                        demo: `<div container="items-lr">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-lr-tb',
-                        desc: descriptions.containerWraps('left', 'right', 'top', 'bottom'),
-                        code: '<div container="items-lr-tb">',
-                        demo: `<div container="items-lr-tb width-1/4">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-lr-bt',
-                        desc: descriptions.containerWraps('left', 'right', 'bottom', 'top'),
-                        code: '<div container="items-lr-bt">',
-                        demo: `<div container="items-lr-bt width-1/4">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-rl',
-                        desc: descriptions.containerNoWrap('right', 'left'),
-                        code: '<div container="items-rl">',
-                        demo: `<div container="items-rl width-1/4">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-rl-tb',
-                        desc: descriptions.containerWraps('right', 'left', 'top', 'bottom'),
-                        code: '<div container="items-rl-tb">',
-                        demo: `<div container="items-rl-tb width-1/4">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-rl-bt',
-                        desc: descriptions.containerWraps('right', 'left', 'bottom', 'top'),
-                        code: '<div container="items-rl-bt">',
-                        demo: `<div container="items-rl-bt width-1/4">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-tb',
-                        desc: descriptions.containerNoWrap('top', 'bottom'),
-                        code: '<div container="items-tb">',
-                        demo: `<div container="items-tb">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-tb-lr',
-                        desc: descriptions.containerWraps('top', 'bottom', 'left', 'right'),
-                        code: '<div container="items-tb-lr">',
-                        demo: `<div container="items-tb-lr" class="height-cap">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-tb-rl',
-                        desc: descriptions.containerWraps('top', 'bottom', 'right', 'left'),
-                        code: '<div container="items-tb-rl">',
-                        demo: `<div container="items-tb-rl" class="height-cap">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-bt',
-                        desc: descriptions.containerNoWrap('bottom', 'top'),
-                        code: '<div container="items-bt">',
-                        demo: `<div container="items-bt">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-bt-lr',
-                        desc: descriptions.containerWraps('bottom', 'top', 'left', 'right'),
-                        code: '<div container="items-bt-lr">',
-                        demo: `<div container="items-bt-lr" class="height-cap">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'items-bt-rl',
-                        desc: descriptions.containerWraps('bottom', 'top', 'right', 'left'),
-                        code: '<div container="items-bt-rl">',
-                        demo: `<div container="items-bt-rl" class="height-cap">
-                                <div><div>1</div></div>
-                                <div><div>2</div></div>
-                                <div><div>3</div></div>
-                                <div><div>4</div></div>
-                                <div><div>5</div></div>
-                                <div><div>6</div></div>
-                            </div>`
-                    },
-                    {
-                        name: 'width-[numerator]/[denominator]',
-                        desc: 'Sets container or item width by fractions of 12ths or 5ths.',
-                        code: '<div container="items-1/2"> or <div container.item="1/2">',
-                        demo: `<div container="items-tb">
-                                <div container.item="width-1/12"><div>1/12</div></div>
-                                <div container.item="width-2/12"><div>2/12 or 1/6</div></div>
-                                <div container.item="width-3/12"><div>3/12 or 1/4</div></div>
-                                <div container.item="width-4/12"><div>4/12 or 1/3</div></div>
-                                <div container.item="width-5/12"><div>5/12</div></div>
-                                <div container.item="width-6/12"><div>6/12 or 1/2</div></div>
-                                <div container.item="width-7/12"><div>7/12</div></div>
-                                <div container.item="width-8/12"><div>8/12 or 2/3</div></div>
-                                <div container.item="width-9/12"><div>9/12 or 3/4</div></div>
-                                <div container.item="width-10/12"><div>10/12 or 5/6</div></div>
-                                <div container.item="width-11/12"><div>11/12</div></div>
-                                <div container.item="width-12/12"><div>12/12 or 1/1</div></div>
-                                <div container.item="width-1/5"><div>1/5</div></div>
-                                <div container.item="width-2/5"><div>2/5</div></div>
-                                <div container.item="width-3/5"><div>3/5</div></div>
-                                <div container.item="width-4/5"><div>4/5</div></div>
-                                <div container.item="width-5/5"><div>5/5</div></div>
-                            </div>`
-                    }
-                ],
-                children: [
-//                    {
-//                        name: 'container.item',
-//                        desc: 'blah blah',
-//                        code: '<div container.item>',
-//                        demo: null
-//                    }
-                ]
-            }
-        ];
-
-        content.forEach(function(object) {
-            const node = createNode(object);
-
-            if (object.modifiers) {
-                object.modifiers.forEach(function (item) {
-                    node.appendChild(createNode(item, object.name));
-                });
-            }
-
-            if (object.children) {
-                object.children.forEach(function(item) {
-                    node.appendChild(createNode(item, object.name));
-                });
-            }
-
-            container.appendChild(node);
+        return str.replace(/[<>]/g, function(match) {
+            return replace[match];
         });
-    </script>
+    }
+
+    (function() {
+        let nav = `<div class="u.item:1/1@*">
+            <div class="u.container:vspace-sm">`;
+
+        let docs = `<div class="u.item:1/1@*">
+            <div class="u.container:center@* u.txt:center@*">
+                <h1 class="u.item:1/1@*">Unity</h1>
+                <h5 class="u.item:1/1@*">CSS layout engine</h5>
+            </div>
+        </div>`;
+
+        for (let elem of ctx) {
+
+            nav += `<a class="u.item:1/1@* u.txt:lg@*" href="#${elem.name}">${elem.name}</a>`;
+
+            docs += `<div class="u.item:1/1@*">
+                <div class="u.container">
+                    <h3 id="${elem.name}" class="u.item:1/1@*">
+                        <a href="#${elem.name}">${elem.name}</a>
+                    </h3>
+                    <p class="docs.desc u.item:1/1@*">${elem.desc}</p>
+                    <pre class="docs.source scrollbar u.item:1/1@*">${escape(elem.html)}</pre>
+                    <div class="docs.demo u.item:1/1@*">${elem.html}</div>
+                </div>
+            </div>`;
+
+            for (let modifier of elem.modifiers) {
+
+                nav += `<a class="u.item:1/1@* sidenav.indent" href="#${elem.name}:${modifier.name}">:${modifier.name}</a>`;
+
+                docs += `<div class="u.item:1/1@*">
+                    <div class="u.container">
+                        <h4 id="${elem.name}:${modifier.name}" class="u.item:1/1@*">
+                            <a href="#${elem.name}:${modifier.name}">${elem.name}:${modifier.name}</a>
+                        </h4>
+                        <p class="docs.desc u.item:1/1@*">${modifier.desc}</p>
+                        <pre class="docs.source scrollbar u.item:1/1@*">${escape(modifier.html)}</pre>
+                        <div class="docs.demo u.item:1/1@*">${modifier.html}</div>
+                    </div>
+                </div>`;
+            }
+        }
+
+        nav += `</div>
+            </div>`;
+
+        document.querySelector('.sidenav\\.container').innerHTML = nav;
+        document.querySelector('.docs\\.container').innerHTML = docs;
+
+    })();
+</script>
 </body>
 </html>

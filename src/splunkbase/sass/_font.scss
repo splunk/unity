@@ -1,9 +1,0 @@
-@each $name, $path in $font--external {
-    @font-face {
-        font-family: $name;
-        src: url('#{$path}.woff2') format('woff2'),
-             url('#{$path}.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-}

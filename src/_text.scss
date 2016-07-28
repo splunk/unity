@@ -1,0 +1,48 @@
+// u.txt
+
+.u\.txt {
+
+    // text-align
+
+    @include responsive('&\\:center') {
+        text-align: center;
+    }
+
+    // font-size
+
+    @each $breakpoint-key, $breakpoint-val in $breakpoints {
+        @media #{$breakpoint-val} {
+            @each $size-key, $size-val in $text--font-size--options {
+                &\:#{$size-key}\@#{$breakpoint-key} {
+                    font-size: $size-val;
+                }
+            }
+        }
+    }
+
+    // headers
+
+    @include responsive('&\\:h1') {
+        font-size: $heading--font-size--h1;
+    }
+
+    @include responsive('&\\:h2') {
+        font-size: $heading--font-size--h2;
+    }
+
+    @include responsive('&\\:h3') {
+        font-size: $heading--font-size--h3;
+    }
+
+    @include responsive('&\\:h4') {
+        font-size: $heading--font-size--h4;
+    }
+
+    @include responsive('&\\:h5') {
+        font-size: $heading--font-size--h5;
+    }
+
+    @include responsive('&\\:h6') {
+        font-size: $heading--font-size--h6;
+    }
+}

@@ -3,6 +3,7 @@
 .u\.root {
     width: 100%;
     overflow: hidden;
+    display: block;
 }
 
 // u.container
@@ -21,7 +22,7 @@
 
     // nowrap
 
-    &\:nowrap {
+    @include responsive('&\\:nowrap') {
         flex-wrap: nowrap;
     }
 
@@ -41,39 +42,44 @@
 
     // vertical align
 
-    &\:top {
+    @include responsive('&\\:top') {
         align-items: flex-start;
     }
 
-    &\:bottom {
+    @include responsive('&\\:bottom') {
         align-items: flex-end;
     }
 
-    &\:baseline {
+    @include responsive('&\\:middle') {
+        align-items: center;
+    }
+
+    @include responsive('&\\:baseline') {
         align-items: baseline;
     }
 
-    &\:tall {
+    @include responsive('&\\:tall') {
         align-items: stretch;
     }
 
-    // padding
-    @each $padding-key, $padding-val in $grid--padding {
-        &\:pad-#{$padding-key} {
-            padding: $padding-val;
-        }
-
-        &\:hpad-#{$padding-key} {
-            padding-left: $padding-val;
-            padding-right: $padding-val;
-        }
-
-        &\:vpad-#{$padding-key} {
-            padding-top: $padding-val;
-            padding-bottom: $padding-val;
+    // padding (don't use @responsive because of specificity collisions)
+    @each $breakpoint-key, $breakpoint-val in $breakpoints {
+        @media #{$breakpoint-val} {
+            @each $padding-key, $padding-val in $grid--padding {
+                &\:pad-#{$padding-key}\@#{$breakpoint-key}  {
+                    padding: $padding-val;
+                }
+                &\:hpad-#{$padding-key}\@#{$breakpoint-key}  {
+                    padding-left: $padding-val;
+                    padding-right: $padding-val;
+                }
+                &\:vpad-#{$padding-key}\@#{$breakpoint-key}  {
+                    padding-top: $padding-val;
+                    padding-bottom: $padding-val;
+                }
+            }
         }
     }
-
 
     // vertical gutter
 
@@ -102,14 +108,15 @@
     }
 }
 
-// u.col
+// u.item
 
 [class*='u.item'] {
-    display: block;
     flex-shrink: 1;
     margin-left: #{$grid--gutter--default / 2};
     margin-right: #{$grid--gutter--default / 2};
     margin-bottom: $grid--gutter--default;
+    overflow: hidden;
+    overflow-wrap: break-word;
 
     // debug
 
@@ -122,8 +129,18 @@
 
     // flex-shrink
 
-    &\:shrink {
+    @include responsive('&\\:shrink') {
         flex-shrink: 99;
+    }
+
+    @include responsive('&\\:static') {
+        flex-shrink: 0;
+    }
+
+    // flex-grow
+
+    @include responsive('&\\:grow') {
+        flex-grow: 99;
     }
 
     // vertical align
@@ -132,7 +149,7 @@
         align-self: flex-start;
     }
 
-    @include responsive('&\\:top') {
+    @include responsive('&\\:bottom') {
         align-self: flex-end;
     }
 
@@ -160,8 +177,7 @@
         order: 1;
     }
 
-    // width
-    // don't use responsive because of specifiity issues
+    // width (don't use @responsive because of specificity collisions)
 
     @each $breakpoint-key, $breakpoint-val in $breakpoints {
         @media #{$breakpoint-val} {

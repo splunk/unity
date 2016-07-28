@@ -1,52 +1,39 @@
-'use strict';
-
 const gulp = require('gulp');
-const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
+const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
-const postcssGulp = require('gulp-postcss');
-const sass = require('gulp-sass');
+const rename = require('gulp-rename');
 const cssnano = require('gulp-cssnano');
-
-const filename = 'unity-2.0.0.min';
-
-//function jsTask() {
-//    gulp.src('./src/js/unity.js')
-//        .pipe(uglify())
-//        .pipe(addDotMin())
-//        .pipe(sourcemaps.init())
-//        .pipe(sourcemaps.write('./'))
-//        .pipe(gulp.dest('./' + dest + '/script'));
-//}
+const sass = require('gulp-sass');
+const autoprefixer = require('autoprefixer');
 
 function watchTask() {
-    gulp.start('css');
-    gulp.watch('./src/**/*.scss', ['css']);
+    gulp.start('build');
+    gulp.watch('./src/**/*.scss', ['build']);
 }
 
-function cssTask() {
-
-    gulp.src('./src/splunkbase/sass/bootstrap.scss')
-
+function buildTask() {
+    gulp.src('./src/bootstrap.scss')
+        // build
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-
-        .pipe(postcssGulp([
-            require('autoprefixer')()
-            // postcssMpc(),
-            // postcssMqPacker()
-        ]))
-
-        // .pipe(cssnano())
-
+        .pipe(postcss([autoprefixer()]))
+        
+        // uncompressed
         .pipe(rename(function(path) {
-            path.basename = 'splunkbase';
+            path.basename = 'unity';
             path.ext = 'css';
-        }))
-
-        .pipe(gulp.dest('./bin/css'));
+         }))        
+        .pipe(gulp.dest('./bin'))
+        
+        // compressed
+        .pipe(cssnano())
+        .pipe(rename(function(path) {
+            path.basename = 'unity.min';
+            path.ext = 'css';
+         }))
+        .pipe(sourcemaps.write('.'))         
+        .pipe(gulp.dest('./bin'));
 }
 
-//gulp.task('js', jsTask);
-gulp.task('css', cssTask);
 gulp.task('watch', watchTask);
-gulp.task('build', ['css']);
+gulp.task('build', buildTask);

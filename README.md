@@ -1,6 +1,4 @@
 Unity
 =====
 
-CSS bootstrapping for Splunk style guidelines
-
-[Demo](https://splunk.github.io/unity/)
+A CSS layout engine, Documentation is available [here](https://splunk.github.io/unity/).
