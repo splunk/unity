@@ -11,15 +11,12 @@
         .scrollbar::-webkit-scrollbar {
             width: .5rem;
         }
-
         .scrollbar::-webkit-scrollbar-thumb {
             background-color: hsl(0, 0%, 70%);
         }
-
         .sidenav {
             width: 16rem;
         }
-
         .sidenav\.fixed {
             position: fixed;
             height: 100vh;
@@ -28,19 +25,19 @@
             overflow-y: scroll;
             box-shadow: 5px 0 10px hsl(0, 0%, 50%);
         }
-
         .sidenav\.indent {
             margin-left: 2rem;
         }
-        .logo {
-            font-family: 'Megrim', cursive;
-            text-shadow: .22em 0 hsl(140, 100%, 80%);
-            font-size: ;
-        }
-        .docs\.desc a {
+        .docs a {
             text-decoration: underline;
         }
-
+        .docs\.title a {
+            text-decoration: none;
+        }
+        .docs\.logo {
+            font-family: 'Megrim', cursive;
+            text-shadow: .22em 0 hsl(140, 100%, 80%);
+        }
         .docs\.source,
         .docs\.demo {
             padding: 1rem;
@@ -48,17 +45,14 @@
             border: 2px dashed hsl(0, 0%, 60%);
             background-color: hsl(0, 0%, 90%);
         }
-
         .docs\.source {
             max-width: 100%;
             font-family: "Lucida Console", Monaco, monospace;
             overflow-x: scroll;
         }
-
         .docs\.demo {
             overflow: hidden;
         }
-
         .docs\.demo [class*='u.item'] {
             border-radius: .25rem;
             background-color: hsl(0, 0%, 60%);
@@ -81,8 +75,8 @@
                 <div class="u.container:pad-lg@* u.container:vspace-lg">
                     <div class="u.item:1/1@*">
                         <div class="u.container u.txt:center@*">
-                            <h1 class="u.item:1/1@* logo">Unity</h1>
-                            <h5 class="u.item:1/1@*">A responsive CSS layout engine</h5>
+                            <h1 class="u.item:1/1@* docs.logo">Unity</h1>
+                            <h5 class="u.item:1/1@*">A responsive CSS layout engine. Source is available <a href="https://github.com/splunk/unity">here</a>.</h5>
                         </div>
                     </div>
                     <div class="u.item:1/1@*">
@@ -434,7 +428,7 @@ Note this modifier is not responsive.`,
 
             docs += `<div class="u.item:1/1@*">
                         <div class="u.container">
-                            <h3 id="${elem.name}" class="u.item:1/1@*">
+                            <h3 id="${elem.name}" class="u.item:1/1@* docs.title">
                                 <a href="#${elem.name}">${elem.name}</a>
                             </h3>
                             <p class="docs.desc u.item:1/1@*">${elem.desc}</p>
@@ -450,7 +444,7 @@ Note this modifier is not responsive.`,
 
                     docs += `<div class="u.item:1/1@*">
                                 <div class="u.container">
-                                    <h4 id="${elem.name}${modifier.name}" class="u.item:1/1@*">
+                                    <h4 id="${elem.name}${modifier.name}" class="u.item:1/1@* docs.title">
                                         <a href="#${elem.name}${modifier.name}">${elem.name}${modifier.name}</a>
                                     </h4>
                                     <p class="docs.desc u.item:1/1@*">${modifier.desc}</p>
