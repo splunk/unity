@@ -5,6 +5,7 @@ const rename = require('gulp-rename');
 const cssnano = require('gulp-cssnano');
 const sass = require('gulp-sass');
 const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');
 
 function watchTask() {
     gulp.start('build');
@@ -16,7 +17,10 @@ function buildTask() {
         // build
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([autoprefixer()]))
+        .pipe(postcss([
+            autoprefixer({browsers: ['> 1%']}),
+            mqpacker()
+        ]))
         
         // uncompressed
         .pipe(rename(function(path) {

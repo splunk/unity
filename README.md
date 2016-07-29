@@ -1,4 +1,4 @@
 Unity
 =====
 
-A CSS layout engine, Documentation is available [here](https://splunk.github.io/unity/).
+A responsive CSS layout engine. Documentation is available [here](https://splunk.github.io/unity/).

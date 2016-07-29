@@ -8,6 +8,7 @@
 		"gulp-sourcemaps": "latest",
 		"gulp-postcss": "latest",
 		"gulp-sass": "latest",
-		"autoprefixer": "latest"
+		"autoprefixer": "latest",
+		"css-mqpacker": "latest"
 	}
 }

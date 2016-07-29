@@ -5,6 +5,8 @@
     <title>Unity Docs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bin/unity.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono:700italic&text=Unity' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Megrim&text=Unity' rel='stylesheet' type='text/css'>
     <style>
         .scrollbar::-webkit-scrollbar {
             width: .5rem;
@@ -18,7 +20,7 @@
             width: 16rem;
         }
 
-        .sidenav\.container {
+        .sidenav\.fixed {
             position: fixed;
             height: 100vh;
             width: inherit;
@@ -28,9 +30,13 @@
         }
 
         .sidenav\.indent {
-            margin-left: 1rem;
+            margin-left: 2rem;
         }
-
+        .logo {
+            font-family: 'Megrim', cursive;
+            text-shadow: .22em 0 hsl(140, 100%, 80%);
+            font-size: ;
+        }
         .docs\.desc a {
             text-decoration: underline;
         }
@@ -63,15 +69,25 @@
 </head>
 <body>
 
-<div class="u.root">
-    <div class="u.container:top@* u.container:nowrap@*">
-        <div class="sidenav u.item:static@* u.hide@sm">
-            <div class="sidenav.container scrollbar u.container:top@* u.container:pad-lg@*"></div>
+<div class="u.container:top@* u.container:nowrap@*">
+    <div class="sidenav u.item:static@* u.hide@sm">
+        <div class="sidenav.fixed scrollbar">
+            <div id="nav" class="u.container:pad-lg@* u.container:top@* u.container:vspace-sm"></div>
         </div>
-        <div class="docs u.item:grow@*">
-            <div class="u.container:center@*">
-                <div class="u.item:cap">
-                    <div class="docs.container u.container:pad-lg@* u.container:vspace-lg"></div>
+    </div>
+    <div class="docs u.item:grow@*">
+        <div class="u.container:center@*">
+            <div class="u.item:cap">
+                <div class="u.container:pad-lg@* u.container:vspace-lg">
+                    <div class="u.item:1/1@*">
+                        <div class="u.container u.txt:center@*">
+                            <h1 class="u.item:1/1@* logo">Unity</h1>
+                            <h5 class="u.item:1/1@*">A responsive CSS layout engine</h5>
+                        </div>
+                    </div>
+                    <div class="u.item:1/1@*">
+                        <div id="docs" class="u.container:vspace-lg"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,37 +97,18 @@
 <script>
     const ctx = [
         {
-            name: 'u.root',
-            desc: 'Element required to clear negative margins for <a href="#u.container">u.container</a>. This is only needed once immediately following the body tag.',
-            html:
-`<body>
-    <div class="u.root">
-        <div class="u.container">
-            <div class="u.item">1</div>
-        </div>
-    </div>
-</body>`,
-            modifiers: []
-        },
-        {
             name: 'u.container',
-            desc: 'Parent element to <a href="#u.item">u.item</a>\'s. Due to it\'s negative margins directly styling is not recommended, use <a href="#u.item">u.item</a>\'s instead.',
+            desc:
+`Parent element to <a href="#u.item">u.item</a>\'s. Due to it\'s negative margins directly styling is not recommended, use <a href="#u.item">u.item</a>\'s instead.
+Unity is build with the responsive web in mind. Most modifiers are appended with a "@{screen-size}-{direction}" selector to toggle their effect based the size of the users screen.
+A full list of breakpoints can be found in _variables.scss under $breakpoints.`,
             html:
 `<div class="u.container">
     <div class="u.item">1</div>
 </div>`,
             modifiers: [
                 {
-                    name: 'left',
-                    desc: 'Align child <a href="#u.item">u.item</a>\'s to the left of the container. This is the default behavior.',
-                    html:
-`<div class="u.container:left@*">
-    <div class="u.item">1</div>
-    <div class="u.item">2</div>
-</div>`
-                },
-                {
-                    name: 'right',
+                    name: ':right@{size}',
                     desc: 'Align child <a href="#u.item">u.item</a>\'s to the right of the container.',
                     html:
 `<div class="u.container:right@*">
@@ -120,7 +117,7 @@
 </div>`
                 },
                 {
-                    name: 'center',
+                    name: ':center@{size}',
                     desc: 'Centers child <a href="#u.item">u.item</a>\'s within the container.',
                     html:
 `<div class="u.container:center@*">
@@ -129,7 +126,7 @@
 </div>`
                 },
                 {
-                    name: 'repel',
+                    name: ':repel@{size}',
                     desc: 'Repels child <a href="#u.item">u.item</a>\'s away from each other.',
                     html:
 `<div class="u.container:repel@*">
@@ -138,17 +135,7 @@
 </div>`
                 },
                 {
-                    name: 'middle',
-                    desc: 'Vertically align child <a href="#u.item">u.item</a>\'s in the middle of the container. This is the default behavior.',
-                    html:
-`<div class="u.container:middle@*">
-    <div class="u.item"
-         style="font-size:3rem">1</div>
-    <div class="u.item">2</div>
-</div>`
-                },
-                {
-                    name: 'top',
+                    name: ':top@{size}',
                     desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the top of the container.',
                     html:
 `<div class="u.container:top@*">
@@ -158,7 +145,7 @@
 </div>`
                 },
                 {
-                    name: 'bottom',
+                    name: ':bottom@{size}',
                     desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the bottom of the container.',
                     html:
 `<div class="u.container:bottom@*">
@@ -168,7 +155,7 @@
 </div>`
                 },
                 {
-                    name: 'baseline',
+                    name: ':baseline@{size}',
                     desc: 'Vertically align child <a href="#u.item">u.item</a>\'s to the text baseline.',
                     html:
 `<div class="u.container:baseline@*">
@@ -178,7 +165,7 @@
 </div>`
                 },
                 {
-                    name: 'tall',
+                    name: ':tall@{size}',
                     desc: 'Vertically stretch child <a href="#u.item">u.item</a>\'s to that of the rows height.',
                     html:
 `<div class="u.container:tall@*">
@@ -188,8 +175,8 @@
 </div>`
                 },
                 {
-                    name: 'pad',
-                    desc: 'Changes the size of the containers padding. Options for this modifier can be found in $grid--padding.',
+                    name: ':pad@{size}',
+                    desc: 'Changes the size of the containers padding. Options for this modifier can be found in _variables.scss under $grid--padding.',
                     html:
 `<div class="u.container:pad-lg@*">
     <div class="u.item">1</div>
@@ -197,8 +184,8 @@
 </div>`
                 },
                 {
-                    name: 'hpad',
-                    desc: 'Changes the size of the containers horizontal padding. Options for this modifier can be found in $grid--padding.',
+                    name: ':hpad@{size}',
+                    desc: 'Changes the size of the containers horizontal padding. Options for this modifier can be found in _variables.scss under $grid--padding.',
                     html:
 `<div class="u.container:hpad-lg@*">
     <div class="u.item">1</div>
@@ -206,8 +193,8 @@
 </div>`
                 },
                 {
-                    name: 'vpad',
-                    desc: 'Changes the size of the containers vertical padding. Options for this modifier can be found in $grid--padding.',
+                    name: ':vpad@{size}',
+                    desc: 'Changes the size of the containers vertical padding. Options for this modifier can be found in _variables.scss under $grid--padding.',
                     html:
 `<div class="u.container:vpad-lg@*">
     <div class="u.item">1</div>
@@ -215,8 +202,11 @@
 </div>`
                 },
                 {
-                    name: 'vspace',
-                    desc: 'Changes the vertical spacing between <a href="#u.item">u.item</a>\'s. Options for this modifier can be found in $grid--gutter--options. Note this modifier is not responsive.',
+                    name: ':vspace',
+                    desc:
+`Changes the vertical spacing between <a href="#u.item">u.item</a>\'s.
+Options for this modifier can be found in _variables.scss under $grid--gutter--options.
+Note this modifier is not responsive.`,
                     html:
 `<div class="u.container:vspace-lg">
     <div class="u.item:1/1@*">1</div>
@@ -224,16 +214,19 @@
 </div>`
                 },
                 {
-                    name: 'hspace',
-                    desc: 'Changes the horizontal spacing between <a href="#u.item">u.item</a>\'s. Options for this modifier can be found in $grid--gutter--options. Note this modifier is not responsive.',
+                    name: ':hspace',
+                    desc:
+`Changes the horizontal spacing between <a href="#u.item">u.item</a>\'s.
+Options for this modifier can be found in _variables.scss under $grid--gutter--options.
+Note this modifier is not responsive.`,
                     html:
-`<div class="u.container:hspace-lg">
+`<div class="u.container:hspace-lg u.container:pad-md@*">
     <div class="u.item">1</div>
     <div class="u.item">2</div>
 </div>`
                 },
                 {
-                    name: 'nowrap',
+                    name: ':nowrap@{size}',
                     desc: 'Prevents the container from wrapping child <a href="#u.item">u.item</a>\'s to the next row.',
                     html:
 `<div class="u.container:nowrap@*">
@@ -245,14 +238,14 @@
         },
         {
             name: 'u.item',
-            desc: 'Child element to <a href="#u.container">u.container</a>.',
+            desc: 'Child element to <a href="#u.container">u.container</a>\'s.',
             html:
 `<div class="u.container">
     <div class="u.item">1</div>
 </div>`,
             modifiers: [
                 {
-                    name: 'shrink',
+                    name: ':shrink@{size}',
                     desc: 'Allows an item to shrink horizontally if other items require more space.',
                     html:
 `<div class="u.container:nowrap@*">
@@ -263,7 +256,7 @@
 </div>`
                 },
                 {
-                    name: 'static',
+                    name: ':static@{size}',
                     desc: 'Stops an item from shrinking horizontally.',
                     html:
 `<div class="u.container:nowrap@*">
@@ -274,7 +267,7 @@
 </div>`
                 },
                 {
-                    name: 'grow',
+                    name: ':grow@{size}',
                     desc: 'Allows an item to take up the remaining free space within a row.',
                     html:
 `<div class="u.container">
@@ -283,7 +276,7 @@
 </div>`
                 },
                 {
-                    name: 'top',
+                    name: ':top@{size}',
                     desc: 'Aligns an item to the top of it\'s row.',
                     html:
 `<div class="u.container">
@@ -294,7 +287,7 @@
 </div>`
                 },
                 {
-                    name: 'bottom',
+                    name: ':bottom@{size}',
                     desc: 'Aligns an item to the bottom of it\'s row.',
                     html:
 `<div class="u.container">
@@ -305,8 +298,8 @@
 </div>`
                 },
                 {
-                    name: 'baseline',
-                    desc: 'Vertically aligns item to the text baseline.',
+                    name: ':baseline@{size}',
+                    desc: 'Vertically aligns an item to the text baseline.',
                     html:
 `<div class="u.container">
     <div class="u.item:baseline@*">1</div>
@@ -316,7 +309,7 @@
 </div>`
                 },
                 {
-                    name: 'tall',
+                    name: ':tall@{size}',
                     desc: 'Vertically stretches an item to that of the row height.',
                     html:
 `<div class="u.container">
@@ -327,8 +320,8 @@
 </div>`
                 },
                 {
-                    name: 'first',
-                    desc: 'Move an item into the first position.',
+                    name: ':first@{size}',
+                    desc: 'Move an item into the first position within a <a href="#u.container">u.container</a>.',
                     html:
 `<div class="u.container">
     <div class="u.item@*">1</div>
@@ -336,8 +329,8 @@
 </div>`
                 },
                 {
-                    name: 'last',
-                    desc: 'Move an item into the last position.',
+                    name: ':last@{size}',
+                    desc: 'Move an item into the last position within a <a href="#u.container">u.container</a>.',
                     html:
 `<div class="u.container">
     <div class="u.item:last@*">1</div>
@@ -345,8 +338,8 @@
 </div>`
                 },
                 {
-                    name: '{width}',
-                    desc: 'Set the width of an item. Width options can be found at $grid--widths.',
+                    name: ':{width}@{size}',
+                    desc: 'Set the width of an item. Options for this modifier can be found in _variables.scss under $grid--widths.',
                     html:
 `<div class="u.container">
     <div class="u.item:1/12@*">1/12</div>
@@ -379,7 +372,7 @@
 </div>`,
             modifiers: [
                 {
-                    name: 'center',
+                    name: ':center@{size}',
                     desc: 'Centers text within an element.',
                     html:
 `<div class="u.container">
@@ -387,7 +380,7 @@
 </div>`
                 },
                 {
-                    name: '{size}',
+                    name: ':{type}@{size}',
                     desc: 'Adjusts the font size of a text node.',
                     html:
 `<div class="u.container">
@@ -405,8 +398,8 @@
             ]
         },
         {
-            name: 'u.hide',
-            desc: 'Responsively hide an element. Breakpoint options can be found in $breakpoints.',
+            name: 'u.hide@{size}',
+            desc: 'Responsively hide an element.',
             html:
 `<div class="u.container">
     <div class="u.item u.hide@*">all</div>
@@ -419,70 +412,58 @@
     <div class="u.item u.hide@lg-up">lg-up</div>
     <div class="u.item u.hide@xl">xl</div>
 </div>`,
-            modifiers: []
         }
     ];
+    !function() {
 
-    function escape(str) {
-        const replace = {
-            '<': '&lt;',
-            '>': '&gt;'
-        };
-        return str.replace(/[<>]/g, function(match) {
-            return replace[match];
-        });
-    }
+        function escape(str) {
+            const replace = {
+                '<': '&lt;',
+                '>': '&gt;'
+            };
+            return str.replace(/[<>]/g, function(match) {
+                return replace[match];
+            });
+        }
 
-    (function() {
-        let nav = `<div class="u.item:1/1@*">
-            <div class="u.container:vspace-sm">`;
-
-        let docs = `<div class="u.item:1/1@*">
-            <div class="u.container:center@* u.txt:center@*">
-                <h1 class="u.item:1/1@*">Unity</h1>
-                <h5 class="u.item:1/1@*">CSS layout engine</h5>
-            </div>
-        </div>`;
-
+        let nav = '';
+        let docs = '';
         for (let elem of ctx) {
 
             nav += `<a class="u.item:1/1@* u.txt:lg@*" href="#${elem.name}">${elem.name}</a>`;
 
             docs += `<div class="u.item:1/1@*">
-                <div class="u.container">
-                    <h3 id="${elem.name}" class="u.item:1/1@*">
-                        <a href="#${elem.name}">${elem.name}</a>
-                    </h3>
-                    <p class="docs.desc u.item:1/1@*">${elem.desc}</p>
-                    <pre class="docs.source scrollbar u.item:1/1@*">${escape(elem.html)}</pre>
-                    <div class="docs.demo u.item:1/1@*">${elem.html}</div>
-                </div>
-            </div>`;
-
-            for (let modifier of elem.modifiers) {
-
-                nav += `<a class="u.item:1/1@* sidenav.indent" href="#${elem.name}:${modifier.name}">:${modifier.name}</a>`;
-
-                docs += `<div class="u.item:1/1@*">
-                    <div class="u.container">
-                        <h4 id="${elem.name}:${modifier.name}" class="u.item:1/1@*">
-                            <a href="#${elem.name}:${modifier.name}">${elem.name}:${modifier.name}</a>
-                        </h4>
-                        <p class="docs.desc u.item:1/1@*">${modifier.desc}</p>
-                        <pre class="docs.source scrollbar u.item:1/1@*">${escape(modifier.html)}</pre>
-                        <div class="docs.demo u.item:1/1@*">${modifier.html}</div>
-                    </div>
+                        <div class="u.container">
+                            <h3 id="${elem.name}" class="u.item:1/1@*">
+                                <a href="#${elem.name}">${elem.name}</a>
+                            </h3>
+                            <p class="docs.desc u.item:1/1@*">${elem.desc}</p>
+                            <pre class="docs.source scrollbar u.item:1/1@*">${escape(elem.html)}</pre>
+                            <div class="docs.demo u.item:1/1@*">${elem.html}</div>
+                        </div>
                 </div>`;
+
+            if (elem.modifiers) {
+                for (let modifier of elem.modifiers) {
+
+                    nav += `<a class="u.item:1/1@* sidenav.indent" href="#${elem.name}${modifier.name}">${modifier.name}</a>`;
+
+                    docs += `<div class="u.item:1/1@*">
+                                <div class="u.container">
+                                    <h4 id="${elem.name}${modifier.name}" class="u.item:1/1@*">
+                                        <a href="#${elem.name}${modifier.name}">${elem.name}${modifier.name}</a>
+                                    </h4>
+                                    <p class="docs.desc u.item:1/1@*">${modifier.desc}</p>
+                                    <pre class="docs.source scrollbar u.item:1/1@*">${escape(modifier.html)}</pre>
+                                    <div class="docs.demo u.item:1/1@*">${modifier.html}</div>
+                                </div>
+                            </div>`;
+                }
             }
         }
-
-        nav += `</div>
-            </div>`;
-
-        document.querySelector('.sidenav\\.container').innerHTML = nav;
-        document.querySelector('.docs\\.container').innerHTML = docs;
-
-    })();
+        document.querySelector('#nav').innerHTML = nav;
+        document.querySelector('#docs').innerHTML = docs;
+    }();
 </script>
 </body>
 </html>

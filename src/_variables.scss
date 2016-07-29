@@ -4,7 +4,7 @@ $text--color:               hsl(0, 0%, 15%) !default;
 $text--font-family:         "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $text--line-height:         1.5 !default;
 $text--font-size--default:  1rem !default;
-$text--font-size--options:  (sm: .75rem,
+$text--font-size--options: (sm: .75rem,
                             lg: 1.5rem) !default;
 
 // headings
@@ -35,10 +35,10 @@ $breakpoints:  ('\\*':      'all',
 
 $grid--max-width:           75rem !default;
 $grid--gutter--default:     1rem !default;
-$grid--gutter--options:    (xs: .25rem,
-                            sm: .5rem,
+$grid--gutter--options:    (sm: .5rem,
                             lg: 2rem) !default;
-$grid--padding:            (md: 1rem,
+$grid--padding:            (sm: .5rem,
+                            md: 1rem,
                             lg: 2rem) !default;
 $grid--widths:             ('1\\/12':  8.333%,
                             '2\\/12':  16.666%,

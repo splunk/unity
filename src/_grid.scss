@@ -1,10 +1,10 @@
 // u.root
 
-.u\.root {
-    width: 100%;
-    overflow: hidden;
-    display: block;
-}
+//.u\.root {
+//    width: 100%;
+//    overflow: hidden;
+//    display: block;
+//}
 
 // u.container
 
@@ -13,9 +13,8 @@
     align-items: center;
     flex-wrap: wrap;
     width: calc(100% + #{$grid--gutter--default});
-    margin-left: -#{$grid--gutter--default / 2};
-    margin-right: -#{$grid--gutter--default / 2};
-    margin-bottom: -#{$grid--gutter--default};
+    margin-top: -$grid--gutter--default;
+    margin-left: -$grid--gutter--default;
 }
 
 .u\.container {
@@ -50,10 +49,6 @@
         align-items: flex-end;
     }
 
-    @include responsive('&\\:middle') {
-        align-items: center;
-    }
-
     @include responsive('&\\:baseline') {
         align-items: baseline;
     }
@@ -63,19 +58,22 @@
     }
 
     // padding (don't use @responsive because of specificity collisions)
+
     @each $breakpoint-key, $breakpoint-val in $breakpoints {
         @media #{$breakpoint-val} {
             @each $padding-key, $padding-val in $grid--padding {
-                &\:pad-#{$padding-key}\@#{$breakpoint-key}  {
-                    padding: $padding-val;
-                }
                 &\:hpad-#{$padding-key}\@#{$breakpoint-key}  {
                     padding-left: $padding-val;
                     padding-right: $padding-val;
                 }
+
                 &\:vpad-#{$padding-key}\@#{$breakpoint-key}  {
                     padding-top: $padding-val;
                     padding-bottom: $padding-val;
+                }
+
+                &\:pad-#{$padding-key}\@#{$breakpoint-key}  {
+                    padding: $padding-val;
                 }
             }
         }
@@ -85,10 +83,10 @@
 
     @each $gutter-key, $gutter-val in $grid--gutter--options {
         &\:vspace-#{$gutter-key} {
-            margin-bottom: -#{$gutter-val};
+            margin-top: -$gutter-val;
 
             & > [class*='u.item'] {
-                margin-bottom: $gutter-val;
+                margin-top: $gutter-val;
             }
         }
     }
@@ -98,11 +96,9 @@
     @each $gutter-key, $gutter-val in $grid--gutter--options {
         &\:hspace-#{$gutter-key} {
             width: calc(100% + #{$gutter-val});
-            margin-left: -#{$gutter-val / 2};
-            margin-right: -#{$gutter-val / 2};
+            margin-left: -$gutter-val;
             & > [class*='u.item'] {
-                margin-left: #{$gutter-val / 2};
-                margin-right: #{$gutter-val / 2};
+                margin-left: $gutter-val;
             }
         }
     }
@@ -112,17 +108,10 @@
 
 [class*='u.item'] {
     flex-shrink: 1;
-    margin-left: #{$grid--gutter--default / 2};
-    margin-right: #{$grid--gutter--default / 2};
-    margin-bottom: $grid--gutter--default;
+    margin-top: $grid--gutter--default;
+    margin-left: $grid--gutter--default;
     overflow: hidden;
     overflow-wrap: break-word;
-
-    // debug
-
-    .debug & {
-        border: 1px solid #0f0;
-    }
 }
 
 .u\.item {

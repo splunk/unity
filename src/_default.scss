@@ -1,16 +1,24 @@
-*,
-*:before,
-*:after {
+html {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden;
 }
 
 body {
+    overflow-x: inherit;
     color: $text--color;
     font-family: $text--font-family;
     font-size: $text--font-size--default;
     line-height: $text--line-height;
+}
+
+// global
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 // links
@@ -63,10 +71,6 @@ input {
     color: currentColor;
     border: 1px solid currentColor;
     padding: .5em;
-}
-
-input:focus {
-    outline: 0;
 }
 
 input::placeholder {
